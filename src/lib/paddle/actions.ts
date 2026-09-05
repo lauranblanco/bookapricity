@@ -15,8 +15,9 @@ async function getOrCreatePaddleCustomerId(email: string) {
   return customer.id;
 }
 
-// Creates a Paddle transaction for the calling admin's club subscription
-// and returns a hosted checkout URL to redirect them to.
+// Creates a Paddle transaction for the calling admin's club subscription.
+// The transaction id is opened client-side via the Paddle.js overlay
+// (Paddle.Checkout.open({ transactionId })).
 export async function createCheckoutTransaction() {
   const supabase = createClient();
 
@@ -47,9 +48,5 @@ export async function createCheckoutTransaction() {
     customData: { club_id: club.id },
   });
 
-  if (!transaction.checkout?.url) {
-    return { error: "Paddle did not return a checkout URL" };
-  }
-
-  return { checkoutUrl: transaction.checkout.url };
+  return { transactionId: transaction.id };
 }

@@ -8,15 +8,21 @@ export async function signUpWithRole(
   email: string,
   password: string,
   role: UserRole,
+  options?: { clubId?: string; next?: string },
 ) {
   const supabase = createClient();
+
+  const redirectUrl = new URL(`${process.env.SITE_URL}/auth/callback`);
+  if (options?.next) {
+    redirectUrl.searchParams.set("next", options.next);
+  }
 
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
-      data: { role },
-      emailRedirectTo: `${process.env.SITE_URL}/auth/callback`,
+      data: { role, club_id: options?.clubId },
+      emailRedirectTo: redirectUrl.toString(),
     },
   });
 
@@ -24,7 +30,9 @@ export async function signUpWithRole(
     return { error: error.message };
   }
 
-  return { data };
+  // With email confirmation required (the default), signUp does not
+  // return an active session — the caller must confirm via email first.
+  return { data, needsEmailConfirmation: !data.session };
 }
 
 export async function signInWithPassword(email: string, password: string) {
