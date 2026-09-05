@@ -16,7 +16,7 @@ export async function signUpWithRole(
     password,
     options: {
       data: { role },
-      emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
+      emailRedirectTo: `${process.env.SITE_URL}/auth/callback`,
     },
   });
 
