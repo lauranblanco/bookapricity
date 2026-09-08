@@ -1,22 +1,19 @@
 import Link from "next/link";
 import { SignupForm } from "./SignupForm";
+import { AuthCard } from "@/components/AuthCard";
 
 export default function SignupPage() {
   return (
-    <main className="mx-auto flex min-h-screen max-w-sm flex-col justify-center gap-6 px-4">
-      <div>
-        <h1 className="text-2xl font-semibold">Create your club</h1>
-        <p className="mt-1 text-sm text-gray-600">
-          Sign up as a club admin to set up resources and invite members.
+    <main className="flex min-h-screen items-center justify-center p-4">
+      <AuthCard>
+        <SignupForm />
+        <p className="mt-3.5 text-[12.5px] text-tinta-800">
+          Already have an account?{" "}
+          <Link href="/login" className="text-umbral hover:text-resol">
+            Log in
+          </Link>
         </p>
-      </div>
-      <SignupForm />
-      <p className="text-sm text-gray-600">
-        Already have an account?{" "}
-        <Link href="/login" className="underline">
-          Log in
-        </Link>
-      </p>
+      </AuthCard>
     </main>
   );
 }

@@ -30,8 +30,11 @@ const SIZE_CLASSES: Record<ButtonSize, string> = {
   lg: "px-5 py-3 text-[15px]",
 };
 
+// min-h-11 (44px) only below the md breakpoint — the touch-target minimum
+// applies on mobile; desktop keeps the board's deliberately compact sizing
+// (ghost table actions, nav chrome) rather than bloating every button.
 const BASE_CLASSES =
-  "inline-flex items-center justify-start gap-2 rounded-none font-heading font-semibold whitespace-nowrap transition-colors duration-[120ms] ease-out disabled:pointer-events-none disabled:opacity-[.45]";
+  "inline-flex min-h-11 items-center justify-start gap-2 rounded-none font-heading font-semibold whitespace-nowrap transition-colors duration-[120ms] ease-out disabled:pointer-events-none disabled:opacity-[.45] md:min-h-0";
 
 function buttonClassName({
   variant = "primary",

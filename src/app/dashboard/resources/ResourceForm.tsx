@@ -1,21 +1,37 @@
 "use client";
 
-import { createResource, updateResource, type ResourceInput } from "@/lib/resources/actions";
+import { createResource, updateResource, deleteResource, type ResourceInput } from "@/lib/resources/actions";
 import { DAY_KEYS, type AvailableHours, type DayKey } from "@/lib/booking/slots";
+import type { DaySchedule } from "@/lib/booking/hoursEditor";
+import { WeeklyHoursEditor } from "@/components/WeeklyHoursEditor";
+import { HoursPresetEditor } from "@/components/HoursPresetEditor";
+import { Input } from "@/components/Input";
+import { Select } from "@/components/Select";
+import { Button } from "@/components/Button";
+import { FieldLabel } from "@/components/Label";
+import { ErrorBlock } from "@/components/ErrorBlock";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const DAY_LABELS: Record<DayKey, string> = {
-  mon: "Monday",
-  tue: "Tuesday",
-  wed: "Wednesday",
-  thu: "Thursday",
-  fri: "Friday",
-  sat: "Saturday",
-  sun: "Sunday",
-};
+const DURATION_OPTIONS = [15, 30, 45, 60, 90, 120];
+const CUTOFF_OPTIONS = [0, 15, 30, 60, 120, 240, 1440];
 
-type DaySchedule = { enabled: boolean; start: string; end: string };
+function withCurrent(options: number[], current: number) {
+  return options.includes(current) ? options : [...options, current].sort((a, b) => a - b);
+}
+
+function durationLabel(minutes: number) {
+  return `${minutes} minutes`;
+}
+
+function cutoffLabel(minutes: number) {
+  if (minutes === 0) return "No cutoff";
+  if (minutes % 60 === 0) {
+    const hours = minutes / 60;
+    return `${hours} hour${hours > 1 ? "s" : ""} before`;
+  }
+  return `${minutes} minutes before`;
+}
 
 function initialDaySchedules(availableHours?: AvailableHours): Record<DayKey, DaySchedule> {
   const schedules = {} as Record<DayKey, DaySchedule>;
@@ -59,6 +75,7 @@ export function ResourceForm({
   );
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   function updateDay(day: DayKey, patch: Partial<DaySchedule>) {
     setDays((prev) => ({ ...prev, [day]: { ...prev[day], ...patch } }));
@@ -100,108 +117,127 @@ export function ResourceForm({
     router.refresh();
   }
 
+  async function handleDelete() {
+    if (!resourceId) return;
+    if (!window.confirm("Delete this resource and all its reservations? This can't be undone.")) {
+      return;
+    }
+
+    setError(null);
+    setIsDeleting(true);
+
+    const result = await deleteResource(resourceId);
+
+    setIsDeleting(false);
+
+    if (result?.error) {
+      setError(result.error);
+      return;
+    }
+
+    router.push("/dashboard/resources");
+    router.refresh();
+  }
+
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-      <label className="flex flex-col gap-1">
-        <span className="text-sm font-medium">Name</span>
-        <input
-          type="text"
-          required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="rounded border border-gray-300 px-3 py-2"
-        />
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <div className="flex items-baseline justify-between border-b-2 border-[rgba(42,33,24,0.4)] pb-2.5">
+        <h3 className="font-heading text-2xl font-medium tracking-[-.012em] text-tinta">
+          {mode === "create" ? "New resource" : "Edit resource"}
+        </h3>
+        {initial?.name && (
+          <span className="font-mono text-[10px] font-medium uppercase tracking-[.1em] text-tinta-600">
+            {initial.name}
+          </span>
+        )}
+      </div>
+
+      <label className="flex flex-col gap-1.5">
+        <FieldLabel>Name</FieldLabel>
+        <Input required value={name} onChange={(e) => setName(e.target.value)} />
       </label>
 
-      <label className="flex flex-col gap-1">
-        <span className="text-sm font-medium">Description</span>
+      <label className="flex flex-col gap-1.5">
+        <FieldLabel>Description</FieldLabel>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="rounded border border-gray-300 px-3 py-2"
+          rows={2}
+          className="w-full rounded-none border border-[rgba(42,33,24,0.3)] bg-white px-[11px] py-[9px] font-sans text-[13px] text-tinta"
         />
       </label>
 
-      <div className="flex gap-4">
-        <label className="flex flex-1 flex-col gap-1">
-          <span className="text-sm font-medium">Capacity</span>
-          <input
+      <div className="grid grid-cols-2 gap-3.5">
+        <label className="flex flex-col gap-1.5">
+          <FieldLabel>Capacity</FieldLabel>
+          <Input
             type="number"
             min={1}
             required
             value={capacity}
             onChange={(e) => setCapacity(Number(e.target.value))}
-            className="rounded border border-gray-300 px-3 py-2"
           />
         </label>
 
-        <label className="flex flex-1 flex-col gap-1">
-          <span className="text-sm font-medium">Booking duration (min)</span>
-          <input
-            type="number"
-            min={5}
-            step={5}
-            required
+        <label className="flex flex-col gap-1.5">
+          <FieldLabel>Slot duration</FieldLabel>
+          <Select
             value={bookingDurationMinutes}
             onChange={(e) => setBookingDurationMinutes(Number(e.target.value))}
-            className="rounded border border-gray-300 px-3 py-2"
-          />
+          >
+            {withCurrent(DURATION_OPTIONS, bookingDurationMinutes).map((minutes) => (
+              <option key={minutes} value={minutes}>
+                {durationLabel(minutes)}
+              </option>
+            ))}
+          </Select>
         </label>
 
-        <label className="flex flex-1 flex-col gap-1">
-          <span className="text-sm font-medium">Cancellation cutoff (min)</span>
-          <input
-            type="number"
-            min={0}
-            step={5}
-            required
+        <label className="flex flex-col gap-1.5">
+          <FieldLabel>Cancellation cutoff</FieldLabel>
+          <Select
             value={cancellationCutoffMinutes}
             onChange={(e) => setCancellationCutoffMinutes(Number(e.target.value))}
-            className="rounded border border-gray-300 px-3 py-2"
-          />
+          >
+            {withCurrent(CUTOFF_OPTIONS, cancellationCutoffMinutes).map((minutes) => (
+              <option key={minutes} value={minutes}>
+                {cutoffLabel(minutes)}
+              </option>
+            ))}
+          </Select>
         </label>
       </div>
 
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Available hours</span>
-        {DAY_KEYS.map((day) => (
-          <div key={day} className="flex items-center gap-3">
-            <label className="flex w-32 items-center gap-2">
-              <input
-                type="checkbox"
-                checked={days[day].enabled}
-                onChange={(e) => updateDay(day, { enabled: e.target.checked })}
-              />
-              <span className="text-sm">{DAY_LABELS[day]}</span>
-            </label>
-            <input
-              type="time"
-              disabled={!days[day].enabled}
-              value={days[day].start}
-              onChange={(e) => updateDay(day, { start: e.target.value })}
-              className="rounded border border-gray-300 px-2 py-1 disabled:opacity-40"
-            />
-            <span className="text-sm text-gray-500">to</span>
-            <input
-              type="time"
-              disabled={!days[day].enabled}
-              value={days[day].end}
-              onChange={(e) => updateDay(day, { end: e.target.value })}
-              className="rounded border border-gray-300 px-2 py-1 disabled:opacity-40"
-            />
-          </div>
-        ))}
+      <div>
+        <div className="hidden sm:block">
+          <WeeklyHoursEditor hours={days} onChange={updateDay} bookingDurationMinutes={bookingDurationMinutes} />
+        </div>
+        <div className="sm:hidden">
+          <HoursPresetEditor hours={days} onChange={updateDay} />
+        </div>
       </div>
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <ErrorBlock>{error}</ErrorBlock>}
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="self-start rounded bg-gray-900 px-4 py-2 text-white disabled:opacity-50"
-      >
-        {isSubmitting ? "Saving..." : mode === "create" ? "Create resource" : "Save changes"}
-      </button>
+      <div className="flex items-center gap-2.5">
+        <Button type="submit" variant="primary" disabled={isSubmitting}>
+          {isSubmitting ? "Saving…" : mode === "create" ? "Create resource" : "Save changes"}
+        </Button>
+        <Button type="button" variant="secondary" onClick={() => router.push("/dashboard/resources")}>
+          Cancel
+        </Button>
+        {mode === "edit" && (
+          <Button
+            type="button"
+            variant="destructive"
+            className="ml-auto"
+            onClick={handleDelete}
+            disabled={isDeleting}
+          >
+            {isDeleting ? "Deleting…" : "Delete resource"}
+          </Button>
+        )}
+      </div>
     </form>
   );
 }

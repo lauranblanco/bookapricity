@@ -161,7 +161,7 @@ export default async function BookPage({
             key={day.iso}
             href={`/book?resourceId=${selectedResource?.id ?? ""}&date=${day.iso}`}
             className={cn(
-              "flex min-w-16 flex-col items-center gap-0.5 border border-transparent px-1 py-2 text-center md:items-start md:px-3.5 md:pb-2 md:pt-2.5 md:text-left",
+              "flex min-h-11 min-w-16 flex-col items-center justify-center gap-0.5 border border-transparent px-1 py-2 text-center md:items-start md:justify-start md:px-3.5 md:pb-2 md:pt-2.5 md:text-left",
               day.isActive
                 ? "bg-umbral text-crema md:bg-white md:text-tinta md:shadow-[inset_0_-3px_0_#E2683F]"
                 : "text-tinta-600",

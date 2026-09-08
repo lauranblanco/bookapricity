@@ -22,20 +22,17 @@ export default async function EditResourcePage({
   }
 
   return (
-    <div className="flex flex-col gap-6">
-      <h1 className="text-2xl font-semibold">Edit resource</h1>
-      <ResourceForm
-        mode="edit"
-        resourceId={resource.id}
-        initial={{
-          name: resource.name,
-          description: resource.description ?? "",
-          capacity: resource.capacity,
-          bookingDurationMinutes: resource.booking_duration_minutes,
-          cancellationCutoffMinutes: resource.cancellation_cutoff_minutes,
-          availableHours: resource.available_hours as AvailableHours,
-        }}
-      />
-    </div>
+    <ResourceForm
+      mode="edit"
+      resourceId={resource.id}
+      initial={{
+        name: resource.name,
+        description: resource.description ?? "",
+        capacity: resource.capacity,
+        bookingDurationMinutes: resource.booking_duration_minutes,
+        cancellationCutoffMinutes: resource.cancellation_cutoff_minutes,
+        availableHours: resource.available_hours as AvailableHours,
+      }}
+    />
   );
 }

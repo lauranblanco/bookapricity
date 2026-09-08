@@ -35,6 +35,18 @@ export async function signUpWithRole(
   return { data, needsEmailConfirmation: !data.session };
 }
 
+export async function resendSignupConfirmation(email: string) {
+  const supabase = createClient();
+
+  const { error } = await supabase.auth.resend({ type: "signup", email });
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  return {};
+}
+
 export async function signInWithPassword(email: string, password: string) {
   const supabase = createClient();
 

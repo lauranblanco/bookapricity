@@ -2,6 +2,9 @@
 
 import { createClub } from "@/lib/clubs/actions";
 import { useState } from "react";
+import { Button } from "@/components/Button";
+import { FieldLabel } from "@/components/Label";
+import { ErrorBlock } from "@/components/ErrorBlock";
 
 export function CreateClubForm() {
   const [name, setName] = useState("");
@@ -24,27 +27,23 @@ export function CreateClubForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <label className="flex flex-col gap-1">
-        <span className="text-sm font-medium">Club name</span>
+      <label className="flex flex-col gap-1.5">
+        <FieldLabel>Club name</FieldLabel>
         <input
           type="text"
           required
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="rounded border border-gray-300 px-3 py-2"
           placeholder="e.g. Riverside Tennis Club"
+          className="w-full rounded-none border border-[rgba(42,33,24,0.3)] bg-white px-[13px] py-[13px] font-heading text-base font-semibold text-tinta"
         />
       </label>
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <ErrorBlock>{error}</ErrorBlock>}
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="rounded bg-gray-900 px-4 py-2 text-white disabled:opacity-50"
-      >
-        {isSubmitting ? "Creating..." : "Create club"}
-      </button>
+      <Button type="submit" variant="primary" disabled={isSubmitting} className="self-start">
+        {isSubmitting ? "Creating…" : "Create club"}
+      </Button>
     </form>
   );
 }

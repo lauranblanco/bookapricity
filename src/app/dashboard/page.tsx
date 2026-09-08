@@ -42,7 +42,14 @@ export default async function DashboardReservationsPage({
   }
 
   const { data } = await query;
-  const reservations = data ?? [];
+  const reservations = (data ?? []).map((reservation) => ({
+    ...reservation,
+    resource: reservation.resources as unknown as { id: string; name: string } | null,
+    member: reservation.users as unknown as { email: string } | null,
+    start: new Date(reservation.start_time),
+    end: new Date(reservation.end_time),
+    isCancelled: reservation.status === "cancelled",
+  }));
   const confirmedCount = reservations.filter((r) => r.status === "confirmed").length;
   const cancelledCount = reservations.filter((r) => r.status === "cancelled").length;
 
@@ -87,52 +94,78 @@ export default async function DashboardReservationsPage({
       </form>
 
       {reservations.length > 0 && (
-        <Table>
-          <TableHead>
-            <tr>
-              <TableHeaderCell>Resource</TableHeaderCell>
-              <TableHeaderCell>Time</TableHeaderCell>
-              <TableHeaderCell>Member</TableHeaderCell>
-              <TableHeaderCell>Status</TableHeaderCell>
-              <TableHeaderCell />
-            </tr>
-          </TableHead>
-          <tbody>
-            {reservations.map((reservation) => {
-              const resource = reservation.resources as unknown as {
-                id: string;
-                name: string;
-              } | null;
-              const member = reservation.users as unknown as { email: string } | null;
-              const start = new Date(reservation.start_time);
-              const end = new Date(reservation.end_time);
-              const isCancelled = reservation.status === "cancelled";
+        <>
+          <div className="hidden md:block">
+            <Table>
+              <TableHead>
+                <tr>
+                  <TableHeaderCell>Resource</TableHeaderCell>
+                  <TableHeaderCell>Time</TableHeaderCell>
+                  <TableHeaderCell>Member</TableHeaderCell>
+                  <TableHeaderCell>Status</TableHeaderCell>
+                  <TableHeaderCell />
+                </tr>
+              </TableHead>
+              <tbody>
+                {reservations.map(({ id, resource, member, start, end, isCancelled }) => (
+                  <TableRow key={id} muted={isCancelled}>
+                    <TableCell className="font-heading text-[13px] font-semibold">
+                      {resource?.name}
+                    </TableCell>
+                    <TableCell className="whitespace-nowrap">
+                      <span
+                        className={
+                          isCancelled ? "font-mono font-medium" : "font-mono font-medium text-tinta"
+                        }
+                      >
+                        {formatTime(start)} – {formatTime(end)}
+                      </span>{" "}
+                      <span className={isCancelled ? "" : "text-tinta-600"}>
+                        {formatDateLabel(start)}
+                      </span>
+                    </TableCell>
+                    <TableCell>{member?.email}</TableCell>
+                    <TableCell>
+                      <Badge tone={isCancelled ? "cancelled" : "confirmed"}>
+                        {isCancelled ? "Cancelled" : "Confirmed"}
+                      </Badge>
+                    </TableCell>
+                    <TableCell className="text-right">
+                      {!isCancelled && <CancelReservationButton reservationId={id} />}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </tbody>
+            </Table>
+          </div>
 
-              return (
-                <TableRow key={reservation.id} muted={isCancelled}>
-                  <TableCell className="font-heading text-[13px] font-semibold">
-                    {resource?.name}
-                  </TableCell>
-                  <TableCell className="whitespace-nowrap">
-                    <span className={isCancelled ? "font-mono font-medium" : "font-mono font-medium text-tinta"}>
-                      {formatTime(start)} – {formatTime(end)}
-                    </span>{" "}
-                    <span className={isCancelled ? "" : "text-tinta-600"}>{formatDateLabel(start)}</span>
-                  </TableCell>
-                  <TableCell>{member?.email}</TableCell>
-                  <TableCell>
-                    <Badge tone={isCancelled ? "cancelled" : "confirmed"}>
-                      {isCancelled ? "Cancelled" : "Confirmed"}
-                    </Badge>
-                  </TableCell>
-                  <TableCell className="text-right">
-                    {!isCancelled && <CancelReservationButton reservationId={reservation.id} />}
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-          </tbody>
-        </Table>
+          <div className="flex flex-col divide-y divide-[rgba(42,33,24,0.12)] border border-[rgba(42,33,24,0.2)] bg-white md:hidden">
+            {reservations.map(({ id, resource, member, start, end, isCancelled }) => (
+              <div key={id} className={isCancelled ? "bg-[#FCFAF5] p-3.5 text-tinta-600" : "p-3.5"}>
+                <div className="flex items-start justify-between gap-2.5">
+                  <div>
+                    <div className="font-heading text-[13px] font-semibold">{resource?.name}</div>
+                    <div className="mt-0.5 whitespace-nowrap">
+                      <span className={isCancelled ? "font-mono font-medium" : "font-mono font-medium text-tinta"}>
+                        {formatTime(start)} – {formatTime(end)}
+                      </span>{" "}
+                      <span className={isCancelled ? "" : "text-tinta-600"}>
+                        {formatDateLabel(start)}
+                      </span>
+                    </div>
+                  </div>
+                  <Badge tone={isCancelled ? "cancelled" : "confirmed"}>
+                    {isCancelled ? "Cancelled" : "Confirmed"}
+                  </Badge>
+                </div>
+                <div className="mt-2.5 flex items-center justify-between gap-2.5">
+                  <span className="text-[13px]">{member?.email}</span>
+                  {!isCancelled && <CancelReservationButton reservationId={id} />}
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
       )}
 
       {reservations.length === 0 && (

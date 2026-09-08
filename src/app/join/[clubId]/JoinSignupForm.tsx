@@ -3,6 +3,10 @@
 import { signUpWithRole } from "@/lib/supabase/actions";
 import Link from "next/link";
 import { useState } from "react";
+import { Input } from "@/components/Input";
+import { Button } from "@/components/Button";
+import { FieldLabel } from "@/components/Label";
+import { ErrorBlock } from "@/components/ErrorBlock";
 
 export function JoinSignupForm({ clubId }: { clubId: string }) {
   const [email, setEmail] = useState("");
@@ -33,8 +37,8 @@ export function JoinSignupForm({ clubId }: { clubId: string }) {
 
   if (submittedEmail) {
     return (
-      <p className="text-gray-700">
-        Check <strong>{submittedEmail}</strong> for a confirmation link to
+      <p className="text-[13.5px] text-[rgba(251,243,228,0.85)]">
+        Check <strong className="text-crema">{submittedEmail}</strong> for a confirmation link to
         finish joining.
       </p>
     );
@@ -42,45 +46,43 @@ export function JoinSignupForm({ clubId }: { clubId: string }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <label className="flex flex-col gap-1">
-          <span className="text-sm font-medium">Email</span>
-          <input
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        <label className="flex flex-col gap-1.5">
+          <FieldLabel className="!text-[rgba(251,243,228,0.7)]">Email</FieldLabel>
+          <Input
             type="email"
             required
+            placeholder="you@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="rounded border border-gray-300 px-3 py-2"
+            className="!border-[rgba(251,243,228,0.5)] !bg-crema !text-tinta"
           />
         </label>
 
-        <label className="flex flex-col gap-1">
-          <span className="text-sm font-medium">Password</span>
-          <input
+        <label className="flex flex-col gap-1.5">
+          <FieldLabel className="!text-[rgba(251,243,228,0.7)]">Password</FieldLabel>
+          <Input
             type="password"
             required
             minLength={6}
+            placeholder="6 characters minimum"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="rounded border border-gray-300 px-3 py-2"
+            className="!border-[rgba(251,243,228,0.5)] !bg-crema !text-tinta"
           />
         </label>
 
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && <ErrorBlock>{error}</ErrorBlock>}
 
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="rounded bg-gray-900 px-4 py-2 text-white disabled:opacity-50"
-        >
-          {isSubmitting ? "Signing up..." : "Sign up and join"}
-        </button>
+        <Button type="submit" variant="cta" block disabled={isSubmitting} className="mt-1">
+          {isSubmitting ? "Joining…" : "Join club"}
+        </Button>
       </form>
 
-      <p className="text-sm text-gray-600">
+      <p className="text-[12.5px] text-[rgba(251,243,228,0.8)]">
         Already have an account?{" "}
-        <Link href={`/login?next=/join/${clubId}`} className="underline">
-          Log in
+        <Link href={`/login?next=/join/${clubId}`} className="text-sol hover:underline">
+          Log in instead
         </Link>
       </p>
     </div>

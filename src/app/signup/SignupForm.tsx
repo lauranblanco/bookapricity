@@ -1,7 +1,23 @@
 "use client";
 
-import { signUpWithRole } from "@/lib/supabase/actions";
+import { signUpWithRole, resendSignupConfirmation } from "@/lib/supabase/actions";
 import { useState } from "react";
+import { Input } from "@/components/Input";
+import { Button } from "@/components/Button";
+import { FieldLabel } from "@/components/Label";
+import { ErrorBlock } from "@/components/ErrorBlock";
+
+// The same "week" gesture used in the hero poster and the empty states —
+// here it doubles as a lightweight progress cue, not a literal step tracker.
+function WeekStrip({ filled }: { filled: number }) {
+  return (
+    <div className="mb-[18px] grid grid-cols-7 gap-1">
+      {Array.from({ length: 7 }, (_, i) => (
+        <div key={i} className={i < filled ? "h-1.5 bg-resol" : "h-1.5 bg-crema-200"} />
+      ))}
+    </div>
+  );
+}
 
 export function SignupForm() {
   const [email, setEmail] = useState("");
@@ -9,6 +25,7 @@ export function SignupForm() {
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedEmail, setSubmittedEmail] = useState<string | null>(null);
+  const [resendState, setResendState] = useState<"idle" | "sending" | "sent">("idle");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -29,49 +46,74 @@ export function SignupForm() {
     setSubmittedEmail(email);
   }
 
+  async function handleResend() {
+    if (!submittedEmail || resendState === "sending") return;
+    setResendState("sending");
+    await resendSignupConfirmation(submittedEmail);
+    setResendState("sent");
+  }
+
   if (submittedEmail) {
     return (
-      <p className="text-gray-700">
-        Check <strong>{submittedEmail}</strong> for a confirmation link to
-        finish creating your account.
-      </p>
+      <div>
+        <WeekStrip filled={2} />
+        <h4 className="mb-2 font-heading text-[22px] font-semibold tracking-[-.01em] text-tinta">
+          Check your inbox
+        </h4>
+        <p className="mb-4 text-[13.5px] text-tinta-800">
+          We sent a confirmation link to <strong>{submittedEmail}</strong>. Open it and you&apos;ll
+          land straight on club setup.
+        </p>
+        <div className="border border-[rgba(42,33,24,0.2)] bg-white p-3">
+          <p className="text-[12.5px] text-tinta-800">
+            Didn&apos;t arrive in a minute?{" "}
+            <button
+              type="button"
+              onClick={handleResend}
+              className="text-umbral underline hover:text-resol"
+            >
+              {resendState === "sending" ? "Resending…" : resendState === "sent" ? "Sent" : "Resend"}
+            </button>{" "}
+            ·{" "}
+            <button
+              type="button"
+              onClick={() => setSubmittedEmail(null)}
+              className="text-umbral underline hover:text-resol"
+            >
+              Use another email
+            </button>
+          </p>
+        </div>
+      </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <label className="flex flex-col gap-1">
-        <span className="text-sm font-medium">Email</span>
-        <input
-          type="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="rounded border border-gray-300 px-3 py-2"
-        />
-      </label>
+    <div>
+      <WeekStrip filled={1} />
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        <label className="flex flex-col gap-1.5">
+          <FieldLabel>Email</FieldLabel>
+          <Input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+        </label>
 
-      <label className="flex flex-col gap-1">
-        <span className="text-sm font-medium">Password</span>
-        <input
-          type="password"
-          required
-          minLength={6}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="rounded border border-gray-300 px-3 py-2"
-        />
-      </label>
+        <label className="flex flex-col gap-1.5">
+          <FieldLabel>Password</FieldLabel>
+          <Input
+            type="password"
+            required
+            minLength={6}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && <ErrorBlock>{error}</ErrorBlock>}
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="rounded bg-gray-900 px-4 py-2 text-white disabled:opacity-50"
-      >
-        {isSubmitting ? "Signing up..." : "Sign up"}
-      </button>
-    </form>
+        <Button type="submit" variant="primary" block disabled={isSubmitting} className="mt-1">
+          {isSubmitting ? "Signing up…" : "Sign up"}
+        </Button>
+      </form>
+    </div>
   );
 }

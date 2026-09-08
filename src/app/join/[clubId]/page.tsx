@@ -16,10 +16,9 @@ export default async function JoinPage({
   if (!clubName) {
     return (
       <main className="mx-auto flex min-h-screen max-w-sm flex-col justify-center gap-4 px-4">
-        <h1 className="text-2xl font-semibold">Invite link not found</h1>
-        <p className="text-gray-600">
-          This invite link doesn&apos;t match a club. Ask your club admin for a
-          new one.
+        <h1 className="font-heading text-2xl font-semibold text-tinta">Invite link not found</h1>
+        <p className="text-tinta-800">
+          This invite link doesn&apos;t match a club. Ask your club admin for a new one.
         </p>
       </main>
     );
@@ -28,24 +27,34 @@ export default async function JoinPage({
   const profile = await getCurrentProfile();
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-sm flex-col justify-center gap-6 px-4">
-      <div>
-        <h1 className="text-2xl font-semibold">Join {clubName}</h1>
-      </div>
-
-      {!profile && <JoinSignupForm clubId={params.clubId} />}
-
-      {profile && !profile.club_id && <JoinButton clubId={params.clubId} />}
-
-      {profile && profile.club_id === params.clubId && (
-        <p className="text-gray-700">You&apos;re already a member of {clubName}.</p>
-      )}
-
-      {profile && profile.club_id && profile.club_id !== params.clubId && (
-        <p className="text-gray-700">
-          Your account already belongs to a different club.
+    <main className="flex min-h-screen items-center justify-center bg-umbral p-7">
+      <div className="w-full max-w-md">
+        <p className="font-mono text-[10px] font-medium uppercase tracking-[.14em] text-sol">
+          You&apos;ve been invited
         </p>
-      )}
+        <h4 className="mt-3 font-heading text-[30px] font-medium tracking-[-.015em] text-crema">
+          Join {clubName}
+        </h4>
+        <p className="mb-[18px] mt-1.5 text-[13.5px] text-[rgba(251,243,228,0.82)]">
+          Create your member account and start booking courts.
+        </p>
+
+        {!profile && <JoinSignupForm clubId={params.clubId} />}
+
+        {profile && !profile.club_id && <JoinButton clubId={params.clubId} />}
+
+        {profile && profile.club_id === params.clubId && (
+          <p className="text-[13.5px] text-[rgba(251,243,228,0.85)]">
+            You&apos;re already a member of {clubName}.
+          </p>
+        )}
+
+        {profile && profile.club_id && profile.club_id !== params.clubId && (
+          <p className="text-[13.5px] text-[rgba(251,243,228,0.85)]">
+            Your account already belongs to a different club.
+          </p>
+        )}
+      </div>
     </main>
   );
 }

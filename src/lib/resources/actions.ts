@@ -40,6 +40,28 @@ export async function createResource(input: ResourceInput) {
   return {};
 }
 
+export async function deleteResource(resourceId: string) {
+  const profile = await getCurrentProfile();
+
+  if (!profile || profile.role !== "admin" || !profile.club_id) {
+    return { error: "Not authorized" };
+  }
+
+  const supabase = createClient();
+  const { error } = await supabase
+    .from("resources")
+    .delete()
+    .eq("id", resourceId)
+    .eq("club_id", profile.club_id);
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/dashboard/resources");
+  return {};
+}
+
 export async function updateResource(resourceId: string, input: ResourceInput) {
   const profile = await getCurrentProfile();
 

@@ -3,6 +3,10 @@
 import { signInWithPassword } from "@/lib/supabase/actions";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { Input } from "@/components/Input";
+import { Button } from "@/components/Button";
+import { FieldLabel } from "@/components/Label";
+import { ErrorBlock } from "@/components/ErrorBlock";
 
 export function LoginForm({ next = "/" }: { next?: string }) {
   const router = useRouter();
@@ -21,7 +25,11 @@ export function LoginForm({ next = "/" }: { next?: string }) {
     setIsSubmitting(false);
 
     if (result.error) {
-      setError(result.error);
+      setError(
+        result.error.toLowerCase().includes("invalid login credentials")
+          ? "Wrong email or password. Try again."
+          : result.error,
+      );
       return;
     }
 
@@ -30,38 +38,28 @@ export function LoginForm({ next = "/" }: { next?: string }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <label className="flex flex-col gap-1">
-        <span className="text-sm font-medium">Email</span>
-        <input
-          type="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="rounded border border-gray-300 px-3 py-2"
-        />
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+      <label className="flex flex-col gap-1.5">
+        <FieldLabel>Email</FieldLabel>
+        <Input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
       </label>
 
-      <label className="flex flex-col gap-1">
-        <span className="text-sm font-medium">Password</span>
-        <input
+      <label className="flex flex-col gap-1.5">
+        <FieldLabel>Password</FieldLabel>
+        <Input
           type="password"
           required
+          invalid={Boolean(error)}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="rounded border border-gray-300 px-3 py-2"
         />
       </label>
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <ErrorBlock>{error}</ErrorBlock>}
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="rounded bg-gray-900 px-4 py-2 text-white disabled:opacity-50"
-      >
-        {isSubmitting ? "Logging in..." : "Log in"}
-      </button>
+      <Button type="submit" variant="primary" block disabled={isSubmitting} className="mt-1">
+        {isSubmitting ? "Logging in…" : "Log in"}
+      </Button>
     </form>
   );
 }
