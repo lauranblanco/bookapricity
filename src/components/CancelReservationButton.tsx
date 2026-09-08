@@ -3,11 +3,22 @@
 import { cancelReservation } from "@/lib/reservations/actions";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { Button } from "@/components/Button";
+import { ErrorBlock } from "@/components/ErrorBlock";
+import { cn } from "@/lib/cn";
 
 export function CancelReservationButton({
   reservationId,
+  disabled,
+  disabledReason,
+  bordered,
+  className,
 }: {
   reservationId: string;
+  disabled?: boolean;
+  disabledReason?: string;
+  bordered?: boolean;
+  className?: string;
 }) {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
@@ -31,14 +42,18 @@ export function CancelReservationButton({
 
   return (
     <div className="flex flex-col items-end gap-1">
-      {error && <p className="text-xs text-red-600">{error}</p>}
-      <button
+      <Button
+        type="button"
+        variant="destructive"
+        size="sm"
         onClick={handleClick}
-        disabled={isSubmitting}
-        className="text-sm text-red-600 underline disabled:opacity-50"
+        disabled={disabled || isSubmitting}
+        title={disabled ? disabledReason : undefined}
+        className={cn(bordered && "border border-bad", className)}
       >
-        {isSubmitting ? "Cancelling..." : "Cancel"}
-      </button>
+        {isSubmitting ? "Cancelling…" : "Cancel"}
+      </Button>
+      {error && <ErrorBlock className="max-w-[220px]">{error}</ErrorBlock>}
     </div>
   );
 }

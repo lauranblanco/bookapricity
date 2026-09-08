@@ -36,20 +36,27 @@ export async function createReservation(resourceId: string, startTimeIso: string
     return { error: "Selected time is outside this resource's available hours" };
   }
 
-  const { error } = await supabase.from("reservations").insert({
-    resource_id: resourceId,
-    member_id: profile.id,
-    start_time: start.toISOString(),
-    end_time: end.toISOString(),
-  });
+  const { data: inserted, error } = await supabase
+    .from("reservations")
+    .insert({
+      resource_id: resourceId,
+      member_id: profile.id,
+      start_time: start.toISOString(),
+      end_time: end.toISOString(),
+    })
+    .select("id")
+    .single();
 
   if (error) {
+    if (error.message.includes("fully booked")) {
+      return { error: "That slot is already full. Pick another time." };
+    }
     return { error: error.message };
   }
 
   revalidatePath("/book");
   revalidatePath("/my-reservations");
-  return {};
+  return { id: inserted.id as string };
 }
 
 export async function cancelReservation(reservationId: string) {

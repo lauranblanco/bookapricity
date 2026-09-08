@@ -3,25 +3,60 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Umbricity palette */
+  --ba-sol: #e8a33d;
+  --ba-resol: #e2683f;
+  --ba-umbral: #35486b;
+  --ba-bruma: #8fa3b8;
+  --ba-crema: #fbf3e4;
+  --ba-tinta: #2a2118;
+
+  /* Roles */
+  --ba-bg: #fbf3e4;
+  --ba-surface: #ffffff;
+  --ba-text: #2a2118;
+  --ba-muted: #7a6e5d;
+  --ba-strong: #4a4136;
+  --ba-line: rgba(42, 33, 24, 0.2);
+  --ba-line-soft: rgba(42, 33, 24, 0.12);
+  --ba-rule: rgba(42, 33, 24, 0.4);
+  --ba-neutral-100: #f5eee0;
+  --ba-neutral-200: #ebe1ce;
+
+  /* Semantic */
+  --ba-success: #2f6b4f;
+  --ba-success-100: #e6f0e9;
+  --ba-success-900: #1f4a36;
+  --ba-warning: #e8a33d;
+  --ba-warning-100: #fcefd5;
+  --ba-warning-900: #7a4e09;
+  --ba-danger: #c0341c;
+  --ba-danger-100: #fbe9e5;
+  --ba-danger-900: #8e2614;
+
+  /* Type */
+  --ba-font-heading: var(--font-heading), system-ui, sans-serif;
+  --ba-font-body: var(--font-body), system-ui, sans-serif;
+  --ba-font-mono: var(--font-mono), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--ba-bg);
+  color: var(--ba-text);
+  font-family: var(--ba-font-body);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Focus ring: never the browser default blue, always umbral with offset. */
+:focus-visible {
+  outline: 2px solid var(--ba-umbral);
+  outline-offset: 2px;
 }

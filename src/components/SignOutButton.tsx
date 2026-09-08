@@ -2,8 +2,15 @@
 
 import { signOut } from "@/lib/supabase/actions";
 import { useRouter } from "next/navigation";
+import { Button, type ButtonVariant } from "@/components/Button";
 
-export function SignOutButton() {
+export function SignOutButton({
+  variant = "secondary",
+  className,
+}: {
+  variant?: ButtonVariant;
+  className?: string;
+}) {
   const router = useRouter();
 
   async function handleClick() {
@@ -13,8 +20,8 @@ export function SignOutButton() {
   }
 
   return (
-    <button onClick={handleClick} className="text-sm text-gray-600 underline">
+    <Button type="button" variant={variant} size="sm" onClick={handleClick} className={className}>
       Sign out
-    </button>
+    </Button>
   );
 }
