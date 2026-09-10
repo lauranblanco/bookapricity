@@ -54,7 +54,11 @@ export async function POST(request: NextRequest) {
         const supabase = createServiceClient();
         await supabase
           .from("clubs")
-          .update({ subscription_status: subscriptionStatus })
+          .update({
+            subscription_status: subscriptionStatus,
+            paddle_customer_id: event.data.customerId,
+            paddle_subscription_id: event.data.id,
+          })
           .eq("id", clubId);
       }
       break;

@@ -7,8 +7,8 @@ import { Badge, type BadgeTone } from "@/components/Badge";
 import { redirect } from "next/navigation";
 
 const NAV_ITEMS: NavTabItem[] = [
-  { href: "/dashboard", label: "Reservations" },
-  { href: "/dashboard/resources", label: "Resources" },
+  { href: "/dashboard", label: "Reservations", shortLabel: "Reserv." },
+  { href: "/dashboard/resources", label: "Resources", shortLabel: "Resour." },
   { href: "/dashboard/members", label: "Members" },
   { href: "/dashboard/billing", label: "Billing" },
 ];
@@ -51,7 +51,7 @@ export default async function DashboardLayout({
   return (
     <div className="min-h-screen bg-crema">
       <header className="bg-umbral">
-        <div className="mx-auto flex h-[58px] max-w-6xl items-stretch justify-between px-6">
+        <div className="flex items-center justify-between gap-4 px-4 py-3 md:mx-auto md:h-[58px] md:max-w-6xl md:px-6 md:py-0">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <BrandMark variant="negative" size={24} />
@@ -59,13 +59,20 @@ export default async function DashboardLayout({
                 BookApricity
               </span>
             </div>
-            <AdminNavTabs items={NAV_ITEMS} />
+            <div className="hidden md:block">
+              <AdminNavTabs items={NAV_ITEMS} layout="desktop" />
+            </div>
           </div>
           <div className="flex items-center gap-3.5">
             <Badge tone={plan.tone}>{plan.label}</Badge>
-            <span className="text-xs text-[rgba(251,243,228,0.7)]">{profile.email}</span>
+            <span className="hidden truncate text-xs text-[rgba(251,243,228,0.7)] sm:inline">
+              {profile.email}
+            </span>
             <SignOutButton variant="outlineInverse" />
           </div>
+        </div>
+        <div className="md:hidden">
+          <AdminNavTabs items={NAV_ITEMS} layout="mobile" />
         </div>
       </header>
       <div className="mx-auto max-w-6xl px-6 py-8">{children}</div>

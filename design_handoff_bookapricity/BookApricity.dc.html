@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/modernist-c59c4496-a679-4208-8c05-e25c25286d0b/styles.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script src="_ds/modernist-c59c4496-a679-4208-8c05-e25c25286d0b/_ds_bundle.js"></script>
+<style>
+:root{
+  --font-heading:Fredoka,system-ui,sans-serif; --font-body:Figtree,system-ui,sans-serif; --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+  --bruma:#8FA3B8;
+  --color-bg:#FBF3E4; --color-surface:#FFFFFF; --color-text:#2A2118;
+  --color-accent:#35486B; --color-accent-2:#E2683F;
+  --color-divider:color-mix(in srgb,#2A2118 40%,transparent);
+  --color-accent-100:#EDF0F6;--color-accent-200:#D6DDEA;--color-accent-300:#B2BED4;--color-accent-400:#7E90B0;--color-accent-500:#4E628C;--color-accent-600:#2B3B58;--color-accent-700:#293857;--color-accent-800:#1E2941;--color-accent-900:#151C2C;
+  --color-accent-2-100:#FDF0EA;--color-accent-2-200:#F9DCCF;--color-accent-2-300:#F3BCA4;--color-accent-2-400:#EC9271;--color-accent-2-500:#E2683F;--color-accent-2-600:#C6512B;--color-accent-2-700:#A03D1E;--color-accent-2-800:#772C15;--color-accent-2-900:#4C1F11;
+  --sol:#E8A33D; --crema:#FBF3E4; --verde:#2F6B4F; --verde-100:#E6F0E9; --danger:#C0341C; --danger-100:#FBE9E5;
+  --neutral-100:#F5EEE0; --neutral-200:#EBE1CE; --neutral-600:#7A6E5D; --neutral-800:#4A4136;
+}
+body{margin:0;background:#F0EAE0;font-family:var(--font-body)}
+.dv-turn{padding:40px 44px 32px;border-bottom:2px solid rgba(42,33,24,.18);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}
+.dv-tid{font:500 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#2A2118;color:#FBF3E4;text-decoration:none;letter-spacing:.06em}
+.dv-tname{font:600 13px/1.2 Fredoka,sans-serif;color:#2A2118;letter-spacing:.02em}
+.dv-opts{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:500 10.5px 'IBM Plex Mono',monospace;padding:3px 7px;background:rgba(42,33,24,.1);color:#2A2118;text-decoration:none;letter-spacing:.06em}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11.5px/1.3 Figtree,sans-serif;color:rgba(42,33,24,.62)}
+.dv-card{max-width:100%;background:var(--color-bg);border:1px solid rgba(42,33,24,.2);box-shadow:0 3px 10px rgba(42,33,24,.1);overflow:hidden}
+.dv-opt:target .dv-oid{background:#E2683F;color:#fff}
+.dv-next{margin:24px 0 0;font:12px/1.6 Figtree,sans-serif;color:rgba(42,33,24,.55)}
+a{color:var(--color-accent)}a:hover{color:var(--color-accent-2)}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">La elección de marca — E, frente a las tres descartadas</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="3a"><div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>Por qué E — las cuatro a 24 px y en tile</div>
+<div class="dv-card" style="width:400px;background:#FBF3E4;padding:0">
+  <div style="background:#FBF3E4;border-bottom:2px solid #35486B;padding:13px 18px;display:flex;align-items:center;gap:10px">
+    <svg viewBox="0 0 120 120" width="24" height="24"><circle cx="60" cy="24" r="21" fill="#E8A33D"></circle><path d="M16 58 A44 44 0 0 1 104 58 Z" fill="#35486B" transform="translate(0,10) scale(1 0.62) translate(0,22)"></path><rect x="16" y="62" width="88" height="44" fill="#35486B"></rect><g fill="#FBF3E4"><rect x="22" y="68" width="24" height="14"></rect><rect x="74" y="68" width="24" height="14"></rect><rect x="22" y="87" width="24" height="14"></rect><rect x="74" y="87" width="24" height="14"></rect></g><rect x="48" y="68" width="24" height="14" fill="#E2683F"></rect><rect x="48" y="87" width="24" height="14" fill="#FBF3E4"></rect></svg>
+    <span style="font:500 16px Fredoka,sans-serif;letter-spacing:-.01em">BookApricity</span>
+    <span style="margin-left:auto;width:26px;height:26px;background:#35486B;display:grid;place-items:center"><svg viewBox="0 0 120 120" width="20" height="20"><circle cx="60" cy="24" r="21" fill="#E8A33D"></circle><path d="M16 58 A44 44 0 0 1 104 58 Z" fill="#FBF3E4" transform="translate(0,10) scale(1 0.62) translate(0,22)"></path><rect x="16" y="62" width="88" height="44" fill="#FBF3E4"></rect><rect x="48" y="68" width="24" height="14" fill="#E2683F"></rect></svg></span>
+    <span style="font:400 10px 'IBM Plex Mono',monospace;color:var(--neutral-600)">D</span>
+  </div>
+  <div style="background:#FBF3E4;border-bottom:2px solid #35486B;padding:13px 18px;display:flex;align-items:center;gap:10px">
+    <svg viewBox="0 0 120 120" width="24" height="24"><circle cx="60" cy="30" r="20" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q88 106 76 96 Q64 106 52 96 Q40 106 28 96 Q24 100 20 96 Z" fill="#35486B"></path><g fill="#FBF3E4"><rect x="28" y="46" width="64" height="7"></rect><rect x="28" y="62" width="20" height="14"></rect><rect x="72" y="62" width="20" height="14"></rect></g><rect x="50" y="62" width="20" height="14" fill="#E2683F"></rect></svg>
+    <span style="font:500 16px Fredoka,sans-serif;letter-spacing:-.01em">BookApricity</span>
+    <span style="margin-left:auto;width:26px;height:26px;background:#35486B;display:grid;place-items:center"><svg viewBox="0 0 120 120" width="20" height="20"><circle cx="60" cy="30" r="20" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q88 106 76 96 Q64 106 52 96 Q40 106 28 96 Q24 100 20 96 Z" fill="#FBF3E4"></path><rect x="50" y="62" width="20" height="14" fill="#E2683F"></rect></svg></span>
+    <span style="font:400 10px 'IBM Plex Mono',monospace;color:var(--neutral-600)">E</span>
+  </div>
+  <div style="background:#FBF3E4;border-bottom:2px solid #35486B;padding:13px 18px;display:flex;align-items:center;gap:10px">
+    <svg viewBox="0 0 120 120" width="24" height="24"><circle cx="60" cy="38" r="21" fill="#E8A33D"></circle><g fill="#35486B"><rect x="40" y="46" width="14" height="14"></rect><rect x="58" y="46" width="14" height="14"></rect><rect x="22" y="64" width="14" height="14"></rect><rect x="40" y="64" width="14" height="14"></rect><rect x="76" y="64" width="14" height="14"></rect><rect x="22" y="82" width="14" height="14"></rect><rect x="40" y="82" width="14" height="14"></rect><rect x="58" y="82" width="14" height="14"></rect><rect x="76" y="82" width="14" height="14"></rect></g><rect x="58" y="64" width="14" height="14" fill="#E2683F"></rect><rect x="76" y="46" width="14" height="14" fill="#E2683F"></rect></svg>
+    <span style="font:500 16px Fredoka,sans-serif;letter-spacing:-.01em">BookApricity</span>
+    <span style="margin-left:auto;width:26px;height:26px;background:#35486B;display:grid;place-items:center"><svg viewBox="0 0 120 120" width="20" height="20"><circle cx="60" cy="38" r="21" fill="#E8A33D"></circle><g fill="#FBF3E4"><rect x="40" y="46" width="14" height="14"></rect><rect x="58" y="46" width="14" height="14"></rect><rect x="22" y="64" width="14" height="14"></rect><rect x="40" y="64" width="14" height="14"></rect><rect x="76" y="64" width="14" height="14"></rect><rect x="22" y="82" width="14" height="14"></rect><rect x="40" y="82" width="14" height="14"></rect><rect x="58" y="82" width="14" height="14"></rect><rect x="76" y="82" width="14" height="14"></rect></g><rect x="58" y="64" width="14" height="14" fill="#E2683F"></rect></svg></span>
+    <span style="font:400 10px 'IBM Plex Mono',monospace;color:var(--neutral-600)">F</span>
+  </div>
+  <div style="background:#FBF3E4;border-bottom:2px solid #35486B;padding:13px 18px;display:flex;align-items:center;gap:10px">
+    <svg viewBox="0 0 120 120" width="24" height="24"><circle cx="60" cy="34" r="22" fill="#E8A33D"></circle><path d="M22 42 H98 V90 Q86 100 74 90 Q62 100 50 90 Q38 100 26 90 Q24 88 22 90 Z" fill="#35486B"></path><rect x="22" y="42" width="76" height="11" fill="#E2683F"></rect><text x="60" y="82" text-anchor="middle" fill="#FBF3E4" style="font:500 36px Fredoka,sans-serif">10</text></svg>
+    <span style="font:500 16px Fredoka,sans-serif;letter-spacing:-.01em">BookApricity</span>
+    <span style="margin-left:auto;width:26px;height:26px;background:#2A2118;display:grid;place-items:center"><svg viewBox="0 0 120 120" width="20" height="20"><circle cx="60" cy="34" r="22" fill="#E8A33D"></circle><path d="M22 42 H98 V90 Q86 100 74 90 Q62 100 50 90 Q38 100 26 90 Q24 88 22 90 Z" fill="#FBF3E4"></path><rect x="22" y="42" width="76" height="11" fill="#E2683F"></rect><text x="60" y="83" text-anchor="middle" fill="#35486B" style="font:500 36px Fredoka,sans-serif">10</text></svg></span>
+    <span style="font:400 10px 'IBM Plex Mono',monospace;color:var(--neutral-600)">G</span>
+  </div>
+  <p style="padding:16px 18px;margin:0;font-size:12.5px;color:var(--neutral-800)">A 24 px la rejilla es lo primero que se pierde: <strong>D</strong> se funde con su propia cabecera, <strong>F</strong> aguanta pero deja de leerse como calendario, y <strong>G</strong> es legible y genérica. <strong>E</strong> —la elegida— sobrevive bajando a 3 casillas y conserva el festón de Umbricity en el borde: es la que hay ahora en todas las pantallas. Ver <a href="#1b">1b</a> para la hoja de identidad.</p>
+</div></div>
+
+</div>
+<p class="dv-next">Fila conservada solo como referencia de reducción — la marca viva es E, en <a href="#1b">1b</a></p>
+</section>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Tipografía Umbricity aplicada</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2a"><div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>El cambio tipográfico — qué hace cada familia</div>
+<div class="dv-card" style="width:520px;padding:26px 28px;background:#fff">
+  <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-2-700)">Fredoka · Figtree · IBM Plex Mono</div>
+  <div style="font:500 44px/1 Fredoka,sans-serif;letter-spacing:-.02em;margin:12px 0 4px">Book a slot</div>
+  <div style="font-size:13px;color:var(--neutral-600);margin-bottom:18px">Fredoka 500 — titulares y wordmark. Redonda y cálida: es la voz de Umbricity y suaviza la rigidez de la retícula.</div>
+  <hr class="hr">
+  <div style="font:400 15px/1.55 Figtree,sans-serif;color:var(--neutral-800)">Figtree 400 lleva todo el cuerpo: descripciones, emails, ayudas. Neutra y de rayos altos, aguanta bien los 12–13px de la interfaz.</div>
+  <hr class="hr">
+  <div style="display:flex;gap:22px;align-items:baseline;flex-wrap:wrap">
+    <div><div style="font:500 26px 'IBM Plex Mono',monospace">13:00</div><div style="font-size:11.5px;color:var(--neutral-600)">Horas y datos</div></div>
+    <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase">Confirmed</div><div style="font-size:11.5px;color:var(--neutral-600)">Badges y etiquetas</div></div>
+  </div>
+  <p style="font-size:12.5px;color:var(--neutral-600);margin:16px 0 0">El mono es el que más cambia la app: las horas se alinean en columna y dejan de bailar entre filas. La estructura Modernist no se toca — solo cambia la voz.</p>
+</div></div>
+
+</div>
+
+</section>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">BookApricity — identidad, patrones y pantallas clave</span></div>
+
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a"><div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Notas de diseño — supuestos y sistema</div>
+<div class="dv-card" style="width:640px;padding:28px 30px;background:#fff">
+  <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-2-700)">Lectura del brief</div>
+  <h3 style="margin:8px 0 14px;font-size:26px;letter-spacing:-.01em">Modernist con temperatura Umbricity</h3>
+  <p style="font-size:13.5px;line-height:1.6;color:var(--neutral-800)">El sistema base (Modernist) manda en estructura: esquina 0, reglas de 2px, todo alineado a la izquierda, rejilla visible. La marca Umbricity manda en color: sustituyo el rojo del sistema por <strong>umbral</strong> (azul) como acento funcional y dejo <strong>resol</strong> (naranja) como segundo acento de énfasis. El fondo pasa de gris a <strong>crema</strong> — es lo que hace que se sienta pariente de Umbricity sin ser idéntico.</p>
+  <hr class="hr">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px 20px">
+    <div><div style="height:44px;background:#35486B"></div><div style="font:600 11px Fredoka,sans-serif;margin-top:6px">Umbral · #35486B</div><div style="font-size:11px;color:var(--neutral-600)">Acción primaria, chrome del nav, texto de titular</div></div>
+    <div><div style="height:44px;background:#E2683F"></div><div style="font:600 11px Fredoka,sans-serif;margin-top:6px">Resol · #E2683F</div><div style="font-size:11px;color:var(--neutral-600)">Énfasis, estado activo, slot elegible</div></div>
+    <div><div style="height:44px;background:#E8A33D"></div><div style="font:600 11px Fredoka,sans-serif;margin-top:6px">Sol · #E8A33D</div><div style="font-size:11px;color:var(--neutral-600)">Avisos, "past due", casi lleno</div></div>
+    <div><div style="height:44px;background:#FBF3E4;border:1px solid rgba(42,33,24,.2)"></div><div style="font:600 11px Fredoka,sans-serif;margin-top:6px">Crema · #FBF3E4</div><div style="font-size:11px;color:var(--neutral-600)">Fondo de app</div></div>
+    <div><div style="height:44px;background:#2F6B4F"></div><div style="font:600 11px Fredoka,sans-serif;margin-top:6px">Verde · #2F6B4F</div><div style="font-size:11px;color:var(--neutral-600)">Confirmed · Active</div></div>
+    <div><div style="height:44px;background:#C0341C"></div><div style="font:600 11px Fredoka,sans-serif;margin-top:6px">Alarma · #C0341C</div><div style="font-size:11px;color:var(--neutral-600)">Cancel, errores de validación</div></div>
+  </div>
+  <hr class="hr">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div>
+      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">Tipografía</div>
+      <div style="font:500 30px/1.05 Fredoka,sans-serif;letter-spacing:-.015em;margin-top:8px">Fredoka 500</div>
+      <div style="font-size:12px;color:var(--neutral-600)">Titulares y wordmark</div>
+      <div style="font:400 15px/1.5 Figtree,sans-serif;margin-top:8px">Figtree 400/600 — cuerpo, emails, descripciones.</div>
+      <div style="font:500 12px/1.5 'IBM Plex Mono',monospace;margin-top:8px;letter-spacing:.02em">IBM PLEX MONO 500 — etiquetas, horas, datos</div>
+    </div>
+    <div>
+      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">Traducción a Tailwind</div>
+      <div style="font:400 11.5px/1.75 'IBM Plex Mono',monospace;margin-top:8px;color:var(--neutral-800)">umbral / resol / sol / crema / tinta<br>rounded-none · border-2 · divide-y-2<br>escala 4/8/12/16/24/32<br>text-[13px] cuerpo · uppercase tracking-[.1em] labels</div>
+    </div>
+  </div>
+  <hr class="hr">
+  <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600);margin-bottom:8px">Supuestos que he tomado</div>
+  <ul style="margin:0;padding-left:18px;font-size:12.5px;line-height:1.7;color:var(--neutral-800)">
+    <li>Copy de producto en inglés (como el repo); mis anotaciones en español.</li>
+    <li>Solo light mode; el crema ya da calidez sin necesitar dark.</li>
+    <li>El nav de admin y el de miembro comparten estructura y se diferencian por peso de color, no por forma — ver <a class="dv-oid" href="#1c">1c</a>.</li>
+    <li>Reservar sigue sin paso de confirmación, pero añado un toast de deshacer — ver <a class="dv-oid" href="#1d">1d</a>.</li>
+  </ul>
+</div></div>
+
+<div class="dv-opt" id="1b"><div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Identidad — la marca E y sus versiones</div>
+<div class="dv-card" style="width:640px;padding:28px 30px;background:#fff">
+  <div style="display:flex;align-items:center;gap:18px;padding-bottom:20px;border-bottom:2px solid var(--color-divider)">
+    <svg viewBox="0 0 120 120" width="82" height="82" aria-label="BookApricity"><circle cx="60" cy="30" r="20" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q92 104 84 96 Q76 104 68 96 Q60 104 52 96 Q44 104 36 96 Q28 104 20 96 Z" fill="#35486B"></path><g fill="#FBF3E4"><rect x="27" y="46" width="66" height="6"></rect><rect x="27" y="60" width="18" height="13"></rect><rect x="75" y="60" width="18" height="13"></rect><rect x="27" y="78" width="18" height="10"></rect><rect x="51" y="78" width="18" height="10"></rect><rect x="75" y="78" width="18" height="10"></rect></g><rect x="51" y="60" width="18" height="13" fill="#E2683F"></rect></svg>
+    <div>
+      <div style="font:500 32px Fredoka,sans-serif;letter-spacing:-.015em;color:#35486B;line-height:1.05">BookApricity</div>
+      <div style="font:400 10px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--neutral-600);margin-top:6px">an umbricity product</div>
+    </div>
+  </div>
+  <p style="font-size:13px;line-height:1.6;color:var(--neutral-800);margin:16px 0 0">Una hoja de calendario cuya arista inferior lleva el festón de la sombrilla de Umbricity, con el sol asomando por detrás. El parentesco vive en el detalle y en la paleta, no en la silueta: se reconoce como calendario primero y como familia Umbricity después. La casilla en resol es siempre la misma — la franja reservada.</p>
+  <hr class="hr">
+  <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--neutral-600);margin-bottom:12px">Versiones</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+    <div>
+      <div style="background:#FBF3E4;border:1px solid rgba(42,33,24,.15);aspect-ratio:1;display:grid;place-items:center"><svg viewBox="0 0 120 120" width="54" height="54"><circle cx="60" cy="30" r="20" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q92 104 84 96 Q76 104 68 96 Q60 104 52 96 Q44 104 36 96 Q28 104 20 96 Z" fill="#35486B"></path><g fill="#FBF3E4"><rect x="27" y="46" width="66" height="6"></rect><rect x="27" y="60" width="18" height="13"></rect><rect x="75" y="60" width="18" height="13"></rect><rect x="27" y="78" width="18" height="10"></rect><rect x="51" y="78" width="18" height="10"></rect><rect x="75" y="78" width="18" height="10"></rect></g><rect x="51" y="60" width="18" height="13" fill="#E2683F"></rect></svg></div>
+      <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:var(--neutral-600);margin-top:6px">Color · sobre crema</div>
+    </div>
+    <div>
+      <div style="background:#35486B;aspect-ratio:1;display:grid;place-items:center"><svg viewBox="0 0 120 120" width="54" height="54"><circle cx="60" cy="30" r="20" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q92 104 84 96 Q76 104 68 96 Q60 104 52 96 Q44 104 36 96 Q28 104 20 96 Z" fill="#FBF3E4"></path><g fill="#35486B"><rect x="27" y="46" width="66" height="6"></rect><rect x="27" y="60" width="18" height="13"></rect><rect x="75" y="60" width="18" height="13"></rect><rect x="27" y="78" width="18" height="10"></rect><rect x="51" y="78" width="18" height="10"></rect><rect x="75" y="78" width="18" height="10"></rect></g><rect x="51" y="60" width="18" height="13" fill="#E2683F"></rect></svg></div>
+      <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:var(--neutral-600);margin-top:6px">Negativo · sobre umbral</div>
+    </div>
+    <div>
+      <div style="background:#FBF3E4;border:1px solid rgba(42,33,24,.15);aspect-ratio:1;display:grid;place-items:center">
+        <svg viewBox="0 0 120 120" width="54" height="54"><circle cx="60" cy="30" r="23" fill="#FBF3E4"></circle><circle cx="60" cy="30" r="20" fill="#2A2118"></circle><path d="M20 38 H100 V96 Q92 104 84 96 Q76 104 68 96 Q60 104 52 96 Q44 104 36 96 Q28 104 20 96 Z" fill="#2A2118"></path><g fill="#FBF3E4"><rect x="27" y="46" width="66" height="6"></rect><rect x="27" y="60" width="18" height="13"></rect><rect x="75" y="60" width="18" height="13"></rect><rect x="27" y="78" width="18" height="10"></rect><rect x="51" y="78" width="18" height="10"></rect><rect x="75" y="78" width="18" height="10"></rect></g><rect x="51" y="60" width="18" height="13" fill="#FBF3E4" stroke="#2A2118" stroke-width="3"></rect></svg>
+      </div>
+      <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:var(--neutral-600);margin-top:6px">Una tinta · aro de fondo</div>
+    </div>
+    <div>
+      <div style="background:#2A2118;aspect-ratio:1;display:grid;place-items:center"><svg viewBox="0 0 120 120" width="54" height="54"><circle cx="60" cy="30" r="20" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q92 104 84 96 Q76 104 68 96 Q60 104 52 96 Q44 104 36 96 Q28 104 20 96 Z" fill="#FBF3E4"></path><g fill="#2A2118"><rect x="27" y="46" width="66" height="6"></rect><rect x="27" y="60" width="18" height="13"></rect><rect x="75" y="60" width="18" height="13"></rect><rect x="27" y="78" width="18" height="10"></rect><rect x="51" y="78" width="18" height="10"></rect><rect x="75" y="78" width="18" height="10"></rect></g><rect x="51" y="60" width="18" height="13" fill="#E2683F"></rect></svg></div>
+      <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:var(--neutral-600);margin-top:6px">App icon · tile tinta</div>
+    </div>
+  </div>
+  <hr class="hr">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+    <div>
+      <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--neutral-600);margin-bottom:10px">Reducción</div>
+      <div style="display:flex;align-items:flex-end;gap:14px">
+        <span><svg viewBox="0 0 120 120" width="40" height="40"><circle cx="60" cy="30" r="20" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q92 104 84 96 Q76 104 68 96 Q60 104 52 96 Q44 104 36 96 Q28 104 20 96 Z" fill="#35486B"></path><g fill="#FBF3E4"><rect x="27" y="46" width="66" height="6"></rect><rect x="27" y="60" width="18" height="13"></rect><rect x="75" y="60" width="18" height="13"></rect><rect x="27" y="78" width="18" height="10"></rect><rect x="51" y="78" width="18" height="10"></rect><rect x="75" y="78" width="18" height="10"></rect></g><rect x="51" y="60" width="18" height="13" fill="#E2683F"></rect></svg><div style="font:400 9.5px 'IBM Plex Mono',monospace;color:var(--neutral-600);text-align:center">40</div></span>
+        <span><svg viewBox="0 0 120 120" width="24" height="24"><circle cx="60" cy="30" r="20" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q88 106 76 96 Q64 106 52 96 Q40 106 28 96 Q24 100 20 96 Z" fill="#35486B"></path><g fill="#FBF3E4"><rect x="28" y="46" width="64" height="7"></rect><rect x="28" y="62" width="20" height="14"></rect><rect x="72" y="62" width="20" height="14"></rect></g><rect x="50" y="62" width="20" height="14" fill="#E2683F"></rect></svg><div style="font:400 9.5px 'IBM Plex Mono',monospace;color:var(--neutral-600);text-align:center">24</div></span>
+        <span><svg viewBox="0 0 120 120" width="16" height="16"><circle cx="60" cy="30" r="22" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q84 108 68 96 Q52 108 36 96 Q28 102 20 96 Z" fill="#35486B"></path><rect x="46" y="58" width="28" height="20" fill="#E2683F"></rect></svg><div style="font:400 9.5px 'IBM Plex Mono',monospace;color:var(--neutral-600);text-align:center">16</div></span>
+      </div>
+      <p style="font-size:12px;color:var(--neutral-600);margin:10px 0 0">De 24 px para abajo bajan a 3 casillas; a 16 px queda solo la casilla resol y tres festones. Mínimo absoluto: 16 px.</p>
+    </div>
+    <div>
+      <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--neutral-600);margin-bottom:10px">Reglas heredadas</div>
+      <ul style="margin:0;padding-left:16px;font-size:12.5px;line-height:1.65;color:var(--neutral-800)">
+        <li>El sol siempre detrás de la hoja, nunca delante.</li>
+        <li>Área de respeto: el radio del sol en los cuatro lados.</li>
+        <li>Sin degradados, sombras, rotaciones ni contornos.</li>
+        <li>Una sola casilla en resol — nunca dos ni ninguna.</li>
+        <li>En una tinta, aro del color del fondo entre sol y hoja.</li>
+      </ul>
+    </div>
+  </div>
+</div></div>
+
+<div class="dv-opt" id="1c"><div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Los dos navs — misma estructura, distinto peso</div>
+<div class="dv-card" style="width:1040px;padding:0;background:#fff">
+  <div style="padding:20px 26px 10px;font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">Admin — barra sólida umbral: estás administrando</div>
+  <div style="background:#35486B;padding:0 26px">
+    <div style="max-width:none;display:flex;align-items:stretch;justify-content:space-between;height:58px">
+      <div style="display:flex;align-items:center;gap:26px">
+        <div style="display:flex;align-items:center;gap:9px">
+          <svg viewBox="0 0 120 120" width="24" height="24"><circle cx="60" cy="30" r="20" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q88 106 76 96 Q64 106 52 96 Q40 106 28 96 Q24 100 20 96 Z" fill="#FBF3E4"></path><g fill="#35486B"><rect x="28" y="46" width="64" height="7"></rect><rect x="28" y="62" width="20" height="14"></rect><rect x="72" y="62" width="20" height="14"></rect></g><rect x="50" y="62" width="20" height="14" fill="#E2683F"></rect></svg>
+          <span style="font:600 14px Fredoka,sans-serif;color:#FBF3E4;letter-spacing:-.01em">BookApricity</span>
+        </div>
+        <div style="display:flex;align-items:stretch;gap:2px">
+          <a href="#1h" style="display:flex;align-items:center;padding:0 14px;font:600 12.5px Fredoka,sans-serif;color:#fff;text-decoration:none;box-shadow:inset 0 -3px 0 #E2683F">Reservations</a>
+          <a href="#1c" style="display:flex;align-items:center;padding:0 14px;font:400 12.5px Figtree,sans-serif;color:rgba(251,243,228,.78);text-decoration:none" style-hover="color:#fff;background:rgba(255,255,255,.08)">Resources</a>
+          <a href="#1c" style="display:flex;align-items:center;padding:0 14px;font:400 12.5px Figtree,sans-serif;color:rgba(251,243,228,.78);text-decoration:none" style-hover="color:#fff;background:rgba(255,255,255,.08)">Members</a>
+          <a href="#1c" style="display:flex;align-items:center;padding:0 14px;font:400 12.5px Figtree,sans-serif;color:rgba(251,243,228,.78);text-decoration:none" style-hover="color:#fff;background:rgba(255,255,255,.08)">Billing</a>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;background:#2F6B4F;color:#fff">Plan active</span>
+        <span style="font-size:12px;color:rgba(251,243,228,.7)">laura@riversidetc.es</span>
+        <button class="btn" style="border:1px solid rgba(251,243,228,.4);color:#FBF3E4;font-size:12px;padding:6px 12px" style-hover="background:rgba(255,255,255,.12)">Sign out</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:26px 26px 10px;font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">Miembro — barra crema con regla de 2px: estás de visita, ligero</div>
+  <div style="background:#FBF3E4;border-bottom:2px solid #35486B;padding:0 26px">
+    <div style="display:flex;align-items:stretch;justify-content:space-between;height:58px">
+      <div style="display:flex;align-items:center;gap:26px">
+        <div style="display:flex;align-items:center;gap:9px">
+          <svg viewBox="0 0 120 120" width="24" height="24"><circle cx="60" cy="30" r="20" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q88 106 76 96 Q64 106 52 96 Q40 106 28 96 Q24 100 20 96 Z" fill="#35486B"></path><g fill="#FBF3E4"><rect x="28" y="46" width="64" height="7"></rect><rect x="28" y="62" width="20" height="14"></rect><rect x="72" y="62" width="20" height="14"></rect></g><rect x="50" y="62" width="20" height="14" fill="#E2683F"></rect></svg>
+          <span style="font:600 14px Fredoka,sans-serif;color:#2A2118;letter-spacing:-.01em">Riverside Tennis Club</span>
+        </div>
+        <div style="display:flex;align-items:stretch;gap:2px">
+          <a href="#1d" style="display:flex;align-items:center;padding:0 14px;font:600 12.5px Fredoka,sans-serif;color:#2A2118;text-decoration:none;box-shadow:inset 0 -3px 0 #E2683F">Book a slot</a>
+          <a href="#1i" style="display:flex;align-items:center;padding:0 14px;font:400 12.5px Figtree,sans-serif;color:var(--neutral-800);text-decoration:none" style-hover="background:rgba(42,33,24,.06)">My reservations</a>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="font-size:12px;color:var(--neutral-600)">marc@gmail.com</span>
+        <button class="btn btn-secondary" style="font-size:12px;padding:6px 12px">Sign out</button>
+      </div>
+    </div>
+  </div>
+  <p style="padding:16px 26px 22px;margin:0;font-size:12px;color:var(--neutral-600);max-width:760px">Comparten altura, retícula, tipografía y el subrayado resol de 3px en la pestaña activa. Lo que cambia es el fondo: el admin va sobre umbral sólido (herramienta de gestión, con el estado de suscripción siempre visible), el miembro sobre crema con la regla inferior de 2px (la app se siente del club, no del panel). En móvil el nav de miembro se convierte en dos pestañas a ancho completo.</p>
+</div></div>
+
+<div class="dv-opt" id="1d"><div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Book a slot — escritorio, franjas por tramo del día</div>
+<div class="dv-card" style="width:1040px;background:#FBF3E4">
+  <div style="background:#FBF3E4;border-bottom:2px solid #35486B;padding:0 26px">
+    <div style="display:flex;align-items:center;justify-content:space-between;height:54px">
+      <div style="display:flex;align-items:center;gap:22px">
+        <div style="display:flex;align-items:center;gap:8px"><svg viewBox="0 0 120 120" width="22" height="22"><circle cx="60" cy="30" r="20" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q88 106 76 96 Q64 106 52 96 Q40 106 28 96 Q24 100 20 96 Z" fill="#35486B"></path><g fill="#FBF3E4"><rect x="28" y="46" width="64" height="7"></rect><rect x="28" y="62" width="20" height="14"></rect><rect x="72" y="62" width="20" height="14"></rect></g><rect x="50" y="62" width="20" height="14" fill="#E2683F"></rect></svg><span style="font:600 13px Fredoka,sans-serif">Riverside Tennis Club</span></div>
+        <div style="display:flex;gap:2px"><span style="padding:16px 12px;font:600 12px Fredoka,sans-serif;box-shadow:inset 0 -3px 0 #E2683F">Book a slot</span><span style="padding:16px 12px;font:400 12px Figtree,sans-serif;color:var(--neutral-600)">My reservations</span></div>
+      </div>
+      <span style="font-size:11.5px;color:var(--neutral-600)">marc@gmail.com</span>
+    </div>
+  </div>
+
+  <div style="padding:26px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px solid var(--color-divider);padding-bottom:12px">
+      <h2 style="margin:0;font-size:30px;letter-spacing:-.012em">Book a slot</h2>
+      <span style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--neutral-600)">Court 1 · 60 min · capacity 4</span>
+    </div>
+
+    <div style="display:flex;gap:10px;align-items:flex-end;margin-top:18px;flex-wrap:wrap">
+      <label style="display:flex;flex-direction:column;gap:5px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">Resource</span>
+        <select class="input" style="width:210px;background:#fff;border:1px solid rgba(42,33,24,.3);padding:9px 10px;font:400 13px Figtree,sans-serif;border-radius:0"><option>Court 1 — clay</option><option>Court 2 — hard</option><option>Padel court</option></select>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:5px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">Date</span>
+        <input type="date" class="input" value="2026-09-10" style="width:160px;background:#fff;border:1px solid rgba(42,33,24,.3);padding:9px 10px;font:400 13px Figtree,sans-serif;border-radius:0">
+      </label>
+      <button class="btn btn-primary" style="background:#35486B;color:#FBF3E4;padding:10px 16px" style-hover="background:#293857">Show slots</button>
+    </div>
+
+    <div style="display:flex;gap:6px;margin-top:20px;border-bottom:1px solid rgba(42,33,24,.18);padding-bottom:0">
+      <sc-for list="{{ dayTabs }}" as="d" hint-placeholder-count="7">
+        <div style="padding:9px 14px 8px;text-align:left;min-width:64px;border:1px solid transparent;cursor:pointer;box-shadow:{{ d.shadow }};background:{{ d.bg }}">
+          <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:{{ d.ink }}">{{ d.dow }}</div>
+          <div style="font-family:Figtree,sans-serif;font-size:17px;letter-spacing:-.01em;font-weight:{{ d.weight }};color:{{ d.ink }}">{{ d.num }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 268px;gap:26px;margin-top:22px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase">Morning</span><span style="flex:1;height:1px;background:rgba(42,33,24,.18)"></span><span style="font-size:11px;color:var(--neutral-600)">3 open · 1 past</span></div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+            <div style="background:#EBE1CE;border:1px solid rgba(42,33,24,.14);padding:11px 12px;opacity:.55"><div style="font:600 17px Fredoka,sans-serif;letter-spacing:-.01em;text-decoration:line-through">8:00</div><div style="font-size:10.5px;color:var(--neutral-800);text-transform:uppercase;letter-spacing:.08em">Past</div></div>
+            <div style="background:#fff;border:1px solid #35486B;padding:11px 12px;cursor:pointer" style-hover="background:#EDF0F6;border-color:#E2683F"><div style="font:600 17px Fredoka,sans-serif;letter-spacing:-.01em">9:00</div><div style="font-size:10.5px;color:var(--verde);font-weight:800;text-transform:uppercase;letter-spacing:.08em">4 left</div></div>
+            <div style="background:#fff;border:1px solid #35486B;padding:11px 12px;cursor:pointer" style-hover="background:#EDF0F6;border-color:#E2683F"><div style="font:600 17px Fredoka,sans-serif;letter-spacing:-.01em">10:00</div><div style="font-size:10.5px;color:var(--verde);font-weight:800;text-transform:uppercase;letter-spacing:.08em">3 left</div></div>
+            <div style="background:#fff;border:1px solid var(--sol);padding:11px 12px;cursor:pointer" style-hover="background:#FCEFD5"><div style="font:600 17px Fredoka,sans-serif;letter-spacing:-.01em">11:00</div><div style="font-size:10.5px;color:#7A4E09;font-weight:800;text-transform:uppercase;letter-spacing:.08em">1 left</div></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase">Afternoon</span><span style="flex:1;height:1px;background:rgba(42,33,24,.18)"></span><span style="font-size:11px;color:var(--neutral-600)">2 open · 1 full · 1 yours</span></div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+            <div style="background:#EBE1CE;border:1px solid rgba(42,33,24,.14);padding:11px 12px"><div style="font:600 17px Fredoka,sans-serif;letter-spacing:-.01em;color:var(--neutral-600)">12:00</div><div style="font-size:10.5px;color:var(--neutral-800);text-transform:uppercase;letter-spacing:.08em;font-weight:800">Full</div></div>
+            <div style="background:#35486B;border:1px solid #35486B;padding:11px 12px;position:relative"><div style="font:600 17px Fredoka,sans-serif;letter-spacing:-.01em;color:#fff">13:00</div><div style="font-size:10.5px;color:#E8A33D;font-weight:800;text-transform:uppercase;letter-spacing:.08em">Selected</div></div>
+            <div style="background:#fff;border:1px solid #35486B;padding:11px 12px;cursor:pointer" style-hover="background:#EDF0F6;border-color:#E2683F"><div style="font:600 17px Fredoka,sans-serif;letter-spacing:-.01em">14:00</div><div style="font-size:10.5px;color:var(--verde);font-weight:800;text-transform:uppercase;letter-spacing:.08em">4 left</div></div>
+            <div style="background:#fff;border:1px solid #35486B;padding:11px 12px;cursor:pointer" style-hover="background:#EDF0F6;border-color:#E2683F"><div style="font:600 17px Fredoka,sans-serif;letter-spacing:-.01em">15:00</div><div style="font-size:10.5px;color:var(--verde);font-weight:800;text-transform:uppercase;letter-spacing:.08em">2 left</div></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase">Evening</span><span style="flex:1;height:1px;background:rgba(42,33,24,.18)"></span><span style="font-size:11px;color:var(--neutral-600)">2 open</span></div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+            <div style="background:#fff;border:1px solid #35486B;padding:11px 12px;cursor:pointer" style-hover="background:#EDF0F6;border-color:#E2683F"><div style="font:600 17px Fredoka,sans-serif;letter-spacing:-.01em">18:00</div><div style="font-size:10.5px;color:var(--verde);font-weight:800;text-transform:uppercase;letter-spacing:.08em">4 left</div></div>
+            <div style="background:#fff;border:1px solid #35486B;padding:11px 12px;cursor:pointer" style-hover="background:#EDF0F6;border-color:#E2683F"><div style="font:600 17px Fredoka,sans-serif;letter-spacing:-.01em">19:00</div><div style="font-size:10.5px;color:var(--verde);font-weight:800;text-transform:uppercase;letter-spacing:.08em">1 left</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="border:1px solid rgba(42,33,24,.2);background:#fff">
+        <div style="background:#35486B;color:#FBF3E4;padding:10px 14px;font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase">Booked just now</div>
+        <div style="padding:14px">
+          <div style="font:600 18px Fredoka,sans-serif;letter-spacing:-.01em">Court 1 — clay</div>
+          <div style="font-size:12.5px;color:var(--neutral-800);margin-top:2px">Thu 10 Sep · 13:00 – 14:00</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:12px">
+            <span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;background:var(--verde-100);color:#1F4A36">Confirmed</span>
+            <button class="btn btn-ghost" style="color:#C0341C;font-size:12px;padding:4px 6px">Undo</button>
+          </div>
+          <hr class="hr" style="margin:14px 0">
+          <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600);margin-bottom:6px">Cancellation</div>
+          <p style="font-size:12px;margin:0;color:var(--neutral-800)">Free until 12:00 today — 60 min before the slot starts.</p>
+        </div>
+      </div>
+    </div>
+    <p style="margin:20px 0 0;font-size:12px;color:var(--neutral-600);border-top:1px solid rgba(42,33,24,.18);padding-top:12px">Tres decisiones: (1) las franjas se agrupan por tramo del día, así 14 botones dejan de ser un muro; (2) cada franja lleva su plaza restante, que es lo que el socio quiere saber antes de tocar; (3) como reservar es inmediato, el panel derecho confirma y ofrece <em>Undo</em> — el paso de confirmación que no existe, sin añadir un click.</p>
+  </div>
+</div></div>
+
+<div class="dv-opt" id="1e"><div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a>Book a slot — móvil, mismo sistema</div>
+<div class="dv-card" style="width:390px;background:#FBF3E4">
+  <div style="background:#FBF3E4;border-bottom:2px solid #35486B;padding:12px 16px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:7px"><svg viewBox="0 0 120 120" width="20" height="20"><circle cx="60" cy="30" r="20" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q88 106 76 96 Q64 106 52 96 Q40 106 28 96 Q24 100 20 96 Z" fill="#35486B"></path><g fill="#FBF3E4"><rect x="28" y="46" width="64" height="7"></rect><rect x="28" y="62" width="20" height="14"></rect><rect x="72" y="62" width="20" height="14"></rect></g><rect x="50" y="62" width="20" height="14" fill="#E2683F"></rect></svg><span style="font:600 12.5px Fredoka,sans-serif">Riverside TC</span></div>
+    <span style="font-size:11px;color:var(--neutral-600)">marc@gmail.com</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;background:#fff;border-bottom:1px solid rgba(42,33,24,.18)">
+    <div style="padding:12px;text-align:center;font:600 12.5px Fredoka,sans-serif;box-shadow:inset 0 -3px 0 #E2683F">Book a slot</div>
+    <div style="padding:12px;text-align:center;font:400 12.5px Figtree,sans-serif;color:var(--neutral-600)">My reservations</div>
+  </div>
+  <div style="padding:18px 16px">
+    <h3 style="margin:0 0 12px;font-size:24px;letter-spacing:-.012em">Book a slot</h3>
+    <select class="input" style="width:100%;background:#fff;border:1px solid rgba(42,33,24,.3);padding:12px;font:600 13px Fredoka,sans-serif;border-radius:0"><option>Court 1 — clay · 60 min</option></select>
+    <div style="display:flex;gap:6px;margin-top:12px;overflow:hidden">
+      <sc-for list="{{ dayTabs }}" as="d" hint-placeholder-count="7">
+        <div style="flex:1;min-width:0;padding:8px 0;text-align:center;border:1px solid {{ d.mborder }};background:{{ d.mbg }}">
+          <div style="font:500 9px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:{{ d.mdow }}">{{ d.dow }}</div>
+          <div style="font-family:Fredoka,sans-serif;font-weight:800;font-size:14px;color:{{ d.mink }}">{{ d.num }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;margin:18px 0 8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase">Morning</span><span style="flex:1;height:1px;background:rgba(42,33,24,.18)"></span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="background:#fff;border:1px solid #35486B;padding:13px 12px;min-height:56px"><div style="font:600 18px Fredoka,sans-serif">9:00</div><div style="font-size:10.5px;font-weight:800;color:var(--verde);text-transform:uppercase;letter-spacing:.08em">4 left</div></div>
+      <div style="background:#fff;border:1px solid #35486B;padding:13px 12px;min-height:56px"><div style="font:600 18px Fredoka,sans-serif">10:00</div><div style="font-size:10.5px;font-weight:800;color:var(--verde);text-transform:uppercase;letter-spacing:.08em">3 left</div></div>
+      <div style="background:#fff;border:1px solid var(--sol);padding:13px 12px;min-height:56px"><div style="font:600 18px Fredoka,sans-serif">11:00</div><div style="font-size:10.5px;font-weight:800;color:#7A4E09;text-transform:uppercase;letter-spacing:.08em">1 left</div></div>
+      <div style="background:#EBE1CE;border:1px solid rgba(42,33,24,.14);padding:13px 12px;min-height:56px"><div style="font:600 18px Fredoka,sans-serif;color:var(--neutral-600)">12:00</div><div style="font-size:10.5px;font-weight:800;color:var(--neutral-800);text-transform:uppercase;letter-spacing:.08em">Full</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;margin:18px 0 8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase">Afternoon</span><span style="flex:1;height:1px;background:rgba(42,33,24,.18)"></span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="background:#35486B;border:1px solid #35486B;padding:13px 12px;min-height:56px"><div style="font:600 18px Fredoka,sans-serif;color:#fff">13:00</div><div style="font-size:10.5px;font-weight:800;color:#E8A33D;text-transform:uppercase;letter-spacing:.08em">Selected</div></div>
+      <div style="background:#fff;border:1px solid #35486B;padding:13px 12px;min-height:56px"><div style="font:600 18px Fredoka,sans-serif">14:00</div><div style="font-size:10.5px;font-weight:800;color:var(--verde);text-transform:uppercase;letter-spacing:.08em">4 left</div></div>
+    </div>
+  </div>
+  <div style="position:sticky;bottom:0;background:#2A2118;color:#FBF3E4;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+    <div><div style="font:600 12.5px Fredoka,sans-serif">Booked 13:00 · Court 1</div><div style="font-size:11px;color:rgba(251,243,228,.7)">Confirmed for Thu 10 Sep</div></div>
+    <button class="btn" style="border:1px solid rgba(251,243,228,.5);color:#FBF3E4;font-size:12px;padding:7px 12px">Undo</button>
+  </div>
+</div></div>
+
+<div class="dv-opt" id="1f"><div class="dv-olabel"><a class="dv-oid" href="#1f">1f</a>Editor de horas semanales — A: barras sobre el día</div>
+<div class="dv-card" style="width:660px;background:#FBF3E4;padding:24px 26px">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px solid var(--color-divider);padding-bottom:10px">
+    <h3 style="margin:0;font-size:24px;letter-spacing:-.012em">Edit resource</h3>
+    <span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">Court 1 — clay</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px">
+    <label style="display:flex;flex-direction:column;gap:5px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">Name</span><input class="input" value="Court 1 — clay" style="background:#fff;border:1px solid rgba(42,33,24,.3);padding:9px 10px;font:400 13px Figtree,sans-serif;border-radius:0"></label>
+    <label style="display:flex;flex-direction:column;gap:5px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">Capacity</span><input class="input" value="4" style="background:#fff;border:1px solid rgba(42,33,24,.3);padding:9px 10px;font:400 13px Figtree,sans-serif;border-radius:0"></label>
+    <label style="display:flex;flex-direction:column;gap:5px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">Slot duration</span><select class="input" style="background:#fff;border:1px solid rgba(42,33,24,.3);padding:9px 10px;font:400 13px Figtree,sans-serif;border-radius:0"><option>60 minutes</option></select></label>
+    <label style="display:flex;flex-direction:column;gap:5px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">Cancellation cutoff</span><select class="input" style="background:#fff;border:1px solid rgba(42,33,24,.3);padding:9px 10px;font:400 13px Figtree,sans-serif;border-radius:0"><option>60 minutes before</option></select></label>
+  </div>
+
+  <div style="display:flex;align-items:baseline;justify-content:space-between;margin:24px 0 4px">
+    <span style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase">Available hours</span>
+    <div style="display:flex;gap:10px"><button class="btn btn-ghost" style="font-size:11.5px;padding:2px 4px">Copy Monday to weekdays</button><button class="btn btn-ghost" style="font-size:11.5px;padding:2px 4px">Clear all</button></div>
+  </div>
+  <div style="border:1px solid rgba(42,33,24,.2);background:#fff">
+    <div style="display:grid;grid-template-columns:112px 1fr;border-bottom:1px solid rgba(42,33,24,.15);background:#F5EEE0">
+      <div></div>
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);font:400 9.5px Figtree,sans-serif;letter-spacing:.06em;color:var(--neutral-600);padding:5px 0">
+        <span>6</span><span>9</span><span>12</span><span>15</span><span>18</span><span>21</span>
+      </div>
+    </div>
+    <sc-for list="{{ weekRows }}" as="row" hint-placeholder-count="7">
+      <div style="display:grid;grid-template-columns:112px 1fr;align-items:center;border-bottom:1px solid rgba(42,33,24,.1);min-height:44px">
+        <div style="display:flex;align-items:center;gap:8px;padding:0 12px">
+          <span style="width:14px;height:14px;border:2px solid #35486B;display:block;background:{{ row.box }}"></span>
+          <span style="font:600 12px Fredoka,sans-serif;color:{{ row.ink }}">{{ row.label }}</span>
+        </div>
+        <div style="position:relative;height:44px;padding:0 12px 0 0">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(to right,rgba(42,33,24,.09) 0 1px,transparent 1px 16.666%)"></div>
+          <div style="position:absolute;top:9px;bottom:9px;left:{{ row.left }};width:{{ row.width }};background:{{ row.fill }};display:flex;align-items:center;justify-content:space-between;padding:0 8px">
+            <span style="font:600 10.5px Fredoka,sans-serif;color:{{ row.barInk }}">{{ row.from }}</span>
+            <span style="font:600 10.5px Fredoka,sans-serif;color:{{ row.barInk }}">{{ row.to }}</span>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:#F5EEE0">
+      <span style="font:400 11.5px Figtree,sans-serif;color:var(--neutral-800)">Open <strong>47 h</strong> per week · generates <strong>47 slots</strong> of 60 min</span>
+      <span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--color-accent-2-700)">Sunday closed</span>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;margin-top:18px;align-items:center">
+    <button class="btn btn-primary" style="background:#35486B;color:#FBF3E4;padding:10px 16px">Save changes</button>
+    <button class="btn btn-secondary" style="padding:10px 16px">Cancel</button>
+    <span style="flex:1"></span>
+    <button class="btn btn-ghost" style="color:#C0341C">Delete resource</button>
+  </div>
+  <p style="margin:14px 0 0;font-size:12px;color:var(--neutral-600)">La fila deja de ser "checkbox + dos inputs sueltos": el día se enciende con la casilla y la ventana se ve como una barra sobre el eje de 24 h, así el admin lee la semana entera de un vistazo. Al hacer clic en la barra aparecen los dos <code>input type=time</code> reales (misma lógica que hoy) y se puede arrastrar los extremos. Abajo, el recuento de horas y de franjas generadas — la consecuencia real de lo que acaba de configurar.</p>
+</div></div>
+
+<div class="dv-opt" id="1g"><div class="dv-olabel"><a class="dv-oid" href="#1g">1g</a>Editor de horas — B: presets primero</div>
+<div class="dv-card" style="width:390px;background:#FBF3E4;padding:22px">
+  <span style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase">Available hours</span>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 16px">
+    <span style="font:600 11.5px Fredoka,sans-serif;padding:7px 11px;background:#35486B;color:#FBF3E4">Weekdays 9–17</span>
+    <span style="font:600 11.5px Fredoka,sans-serif;padding:7px 11px;background:#fff;border:1px solid rgba(42,33,24,.28)">Every day 8–22</span>
+    <span style="font:600 11.5px Fredoka,sans-serif;padding:7px 11px;background:#fff;border:1px solid rgba(42,33,24,.28)">Weekends only</span>
+    <span style="font:600 11.5px Fredoka,sans-serif;padding:7px 11px;background:#fff;border:1px solid rgba(42,33,24,.28)">Custom…</span>
+  </div>
+  <div style="border:1px solid rgba(42,33,24,.2);background:#fff;padding:14px">
+    <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600);margin-bottom:8px">Open on</div>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px">
+      <div style="padding:9px 0;text-align:center;font:600 11px Fredoka,sans-serif;background:#EBE1CE;color:var(--neutral-600)">S</div>
+      <div style="padding:9px 0;text-align:center;font:600 11px Fredoka,sans-serif;background:#35486B;color:#fff">M</div>
+      <div style="padding:9px 0;text-align:center;font:600 11px Fredoka,sans-serif;background:#35486B;color:#fff">T</div>
+      <div style="padding:9px 0;text-align:center;font:600 11px Fredoka,sans-serif;background:#35486B;color:#fff">W</div>
+      <div style="padding:9px 0;text-align:center;font:600 11px Fredoka,sans-serif;background:#35486B;color:#fff">T</div>
+      <div style="padding:9px 0;text-align:center;font:600 11px Fredoka,sans-serif;background:#35486B;color:#fff">F</div>
+      <div style="padding:9px 0;text-align:center;font:600 11px Fredoka,sans-serif;background:#EBE1CE;color:var(--neutral-600)">S</div>
+    </div>
+    <div style="display:flex;align-items:flex-end;gap:8px;margin-top:14px">
+      <label style="flex:1;display:flex;flex-direction:column;gap:5px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">From</span><input class="input" type="time" value="09:00" style="background:#fff;border:1px solid rgba(42,33,24,.3);padding:9px 10px;font:600 13px Fredoka,sans-serif;border-radius:0"></label>
+      <span style="font-size:12px;color:var(--neutral-600);padding-bottom:11px">to</span>
+      <label style="flex:1;display:flex;flex-direction:column;gap:5px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">To</span><input class="input" type="time" value="17:00" style="background:#fff;border:1px solid rgba(42,33,24,.3);padding:9px 10px;font:600 13px Fredoka,sans-serif;border-radius:0"></label>
+    </div>
+    <button class="btn btn-ghost" style="font-size:11.5px;padding:6px 0;margin-top:8px">+ Different hours for one day</button>
+  </div>
+  <p style="margin:14px 0 0;font-size:12px;color:var(--neutral-600)">Variante más barata de implementar y mejor en móvil: un rango compartido para los días encendidos, y solo se abre el detalle por día si el club lo necesita. Cubre el 80% de los casos reales (mismo horario L–V) con tres toques.</p>
+</div></div>
+
+<div class="dv-opt" id="1h"><div class="dv-olabel"><a class="dv-oid" href="#1h">1h</a>Reservations (admin) — tabla, filtros, badges y vacío</div>
+<div class="dv-card" style="width:1040px;background:#FBF3E4">
+  <div style="background:#35486B;padding:0 26px;display:flex;align-items:center;justify-content:space-between;height:54px">
+    <div style="display:flex;align-items:center;gap:22px">
+      <div style="display:flex;align-items:center;gap:8px"><svg viewBox="0 0 120 120" width="22" height="22"><circle cx="60" cy="30" r="20" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q88 106 76 96 Q64 106 52 96 Q40 106 28 96 Q24 100 20 96 Z" fill="#FBF3E4"></path><g fill="#35486B"><rect x="28" y="46" width="64" height="7"></rect><rect x="28" y="62" width="20" height="14"></rect><rect x="72" y="62" width="20" height="14"></rect></g><rect x="50" y="62" width="20" height="14" fill="#E2683F"></rect></svg><span style="font:600 13px Fredoka,sans-serif;color:#FBF3E4">BookApricity</span></div>
+      <div style="display:flex;gap:2px">
+        <span style="padding:16px 12px;font:600 12px Fredoka,sans-serif;color:#fff;box-shadow:inset 0 -3px 0 #E2683F">Reservations</span>
+        <span style="padding:16px 12px;font:400 12px Figtree,sans-serif;color:rgba(251,243,228,.78)">Resources</span>
+        <span style="padding:16px 12px;font:400 12px Figtree,sans-serif;color:rgba(251,243,228,.78)">Members</span>
+        <span style="padding:16px 12px;font:400 12px Figtree,sans-serif;color:rgba(251,243,228,.78)">Billing</span>
+      </div>
+    </div>
+    <span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;background:#2F6B4F;color:#fff">Plan active</span>
+  </div>
+  <div style="padding:26px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px solid var(--color-divider);padding-bottom:12px">
+      <h2 style="margin:0;font-size:30px;letter-spacing:-.012em">Reservations</h2>
+      <span style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--neutral-600)">18 confirmed · 2 cancelled this week</span>
+    </div>
+    <div style="display:flex;gap:10px;align-items:flex-end;margin-top:16px">
+      <label style="display:flex;flex-direction:column;gap:5px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">Resource</span><select class="input" style="width:190px;background:#fff;border:1px solid rgba(42,33,24,.3);padding:9px 10px;font:400 13px Figtree,sans-serif;border-radius:0"><option>All resources</option></select></label>
+      <label style="display:flex;flex-direction:column;gap:5px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">Date</span><input class="input" type="date" value="2026-09-10" style="width:160px;background:#fff;border:1px solid rgba(42,33,24,.3);padding:9px 10px;font:400 13px Figtree,sans-serif;border-radius:0"></label>
+      <button class="btn btn-primary" style="background:#35486B;color:#FBF3E4;padding:10px 16px">Filter</button>
+      <button class="btn btn-ghost">Reset</button>
+    </div>
+
+    <table class="table" style="width:100%;margin-top:20px;border-collapse:collapse;background:#fff;border:1px solid rgba(42,33,24,.2)">
+      <thead><tr style="background:#F5EEE0;border-bottom:2px solid var(--color-divider)">
+        <th style="text-align:left;padding:9px 12px;font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-800)">Resource</th>
+        <th style="text-align:left;padding:9px 12px;font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-800)">Time</th>
+        <th style="text-align:left;padding:9px 12px;font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-800)">Member</th>
+        <th style="text-align:left;padding:9px 12px;font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-800)">Status</th>
+        <th style="padding:9px 12px"></th>
+      </tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(42,33,24,.12)">
+          <td style="padding:12px;font:600 13px Fredoka,sans-serif">Court 1 — clay</td>
+          <td style="padding:12px;font-size:13px"><strong style="font-family:Fredoka,sans-serif;font-weight:800">09:00 – 10:00</strong> <span style="color:var(--neutral-600)">Thu 10 Sep</span></td>
+          <td style="padding:12px;font-size:13px;color:var(--neutral-800)">marc@gmail.com</td>
+          <td style="padding:12px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;background:var(--verde-100);color:#1F4A36">Confirmed</span></td>
+          <td style="padding:12px;text-align:right"><button class="btn btn-ghost" style="color:#C0341C;font-size:12px">Cancel</button></td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(42,33,24,.12)">
+          <td style="padding:12px;font:600 13px Fredoka,sans-serif">Court 2 — hard</td>
+          <td style="padding:12px;font-size:13px"><strong style="font-family:Fredoka,sans-serif;font-weight:800">11:00 – 12:00</strong> <span style="color:var(--neutral-600)">Thu 10 Sep</span></td>
+          <td style="padding:12px;font-size:13px;color:var(--neutral-800)">ana.ruiz@example.com</td>
+          <td style="padding:12px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;background:var(--verde-100);color:#1F4A36">Confirmed</span></td>
+          <td style="padding:12px;text-align:right"><button class="btn btn-ghost" style="color:#C0341C;font-size:12px">Cancel</button></td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(42,33,24,.12);background:#FCFAF5">
+          <td style="padding:12px;font:600 13px Fredoka,sans-serif;color:var(--neutral-600)">Padel court</td>
+          <td style="padding:12px;font-size:13px;color:var(--neutral-600)"><strong style="font-family:Fredoka,sans-serif;font-weight:800">18:00 – 19:00</strong> Thu 10 Sep</td>
+          <td style="padding:12px;font-size:13px;color:var(--neutral-600)">joan@example.com</td>
+          <td style="padding:12px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;background:#EBE1CE;color:var(--neutral-800)">Cancelled</span></td>
+          <td style="padding:12px"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px">
+      <div style="border:1px dashed rgba(42,33,24,.35);background:#fff;padding:22px;display:flex;flex-direction:column;align-items:flex-start;gap:8px">
+        <svg viewBox="0 0 120 120" width="34" height="34" style="opacity:.5"><circle cx="60" cy="30" r="20" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q92 104 84 96 Q76 104 68 96 Q60 104 52 96 Q44 104 36 96 Q28 104 20 96 Z" fill="#35486B"></path><g fill="#FBF3E4"><rect x="27" y="46" width="66" height="6"></rect><rect x="27" y="60" width="18" height="13"></rect><rect x="75" y="60" width="18" height="13"></rect><rect x="27" y="78" width="18" height="10"></rect><rect x="51" y="78" width="18" height="10"></rect><rect x="75" y="78" width="18" height="10"></rect></g><rect x="51" y="60" width="18" height="13" fill="#E2683F"></rect></svg>
+        <div style="font:600 16px Fredoka,sans-serif">No reservations found</div>
+        <p style="margin:0;font-size:12.5px;color:var(--neutral-800)">Nothing booked for Court 1 on 10 Sep. Try another date, or check the resource's available hours.</p>
+        <button class="btn btn-secondary" style="font-size:12px">Clear filters</button>
+      </div>
+      <div style="border:1px solid rgba(42,33,24,.2);background:#fff;padding:22px">
+        <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600);margin-bottom:12px">Badges — inventario</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;background:var(--verde-100);color:#1F4A36">Confirmed</span>
+          <span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;background:#EBE1CE;color:var(--neutral-800)">Cancelled</span>
+          <span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;background:#2F6B4F;color:#fff">Plan active</span>
+          <span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;background:#FCEFD5;color:#7A4E09">Past due</span>
+          <span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;background:#fff;border:1px solid rgba(42,33,24,.35);color:var(--neutral-800)">Inactive</span>
+          <span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;background:var(--danger-100);color:#8E2614">Cancelled plan</span>
+          <span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;background:#35486B;color:#fff">Admin</span>
+          <span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;background:#EDF0F6;color:#293857">Member</span>
+        </div>
+        <hr class="hr" style="margin:14px 0">
+        <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600);margin-bottom:8px">Error de validación</div>
+        <div style="border-left:3px solid #C0341C;background:var(--danger-100);padding:9px 11px;font-size:12.5px;color:#8E2614">That slot is already full. Pick another time.</div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<div class="dv-opt" id="1i"><div class="dv-olabel"><a class="dv-oid" href="#1i">1i</a>My reservations + estado vacío (móvil)</div>
+<div class="dv-card" style="width:390px;background:#FBF3E4;padding:0">
+  <div style="background:#FBF3E4;border-bottom:2px solid #35486B;padding:12px 16px;font:600 12.5px Fredoka,sans-serif">Riverside TC</div>
+  <div style="padding:18px 16px">
+    <h3 style="margin:0 0 14px;font-size:24px;letter-spacing:-.012em">My reservations</h3>
+    <div style="border:1px solid rgba(42,33,24,.2);background:#fff">
+      <div style="padding:14px;border-bottom:1px solid rgba(42,33,24,.12)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><div style="font:600 15px Fredoka,sans-serif">Court 1 — clay</div><div style="font-size:12.5px;color:var(--neutral-800);margin-top:2px">Thu 10 Sep · 13:00 – 14:00</div></div>
+          <span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;background:var(--verde-100);color:#1F4A36;white-space:nowrap">Confirmed</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px">
+          <span style="font-size:11.5px;color:var(--neutral-600)">Free cancellation until 12:00</span>
+          <button class="btn" style="border:1px solid #C0341C;color:#C0341C;font-size:12px;padding:7px 12px;min-height:44px">Cancel</button>
+        </div>
+      </div>
+      <div style="padding:14px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><div style="font:600 15px Fredoka,sans-serif">Padel court</div><div style="font-size:12.5px;color:var(--neutral-800);margin-top:2px">Sat 12 Sep · 10:00 – 11:00</div></div>
+          <span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;background:var(--verde-100);color:#1F4A36;white-space:nowrap">Confirmed</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px">
+          <span style="font-size:11.5px;color:var(--neutral-600)">Free cancellation until 09:00</span>
+          <button class="btn" style="border:1px solid #C0341C;color:#C0341C;font-size:12px;padding:7px 12px;min-height:44px">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:20px;border:1px dashed rgba(42,33,24,.35);background:#fff;padding:20px">
+      <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600);margin-bottom:10px">Estado vacío</div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:12px">
+        <div style="height:6px;background:#EBE1CE"></div><div style="height:6px;background:#EBE1CE"></div><div style="height:6px;background:#EBE1CE"></div><div style="height:6px;background:#EBE1CE"></div><div style="height:6px;background:#EBE1CE"></div><div style="height:6px;background:#EBE1CE"></div><div style="height:6px;background:#EBE1CE"></div>
+      </div>
+      <div style="font:600 16px Fredoka,sans-serif">No upcoming reservations</div>
+      <p style="margin:6px 0 12px;font-size:12.5px;color:var(--neutral-800)">Your week is wide open. Court 1 has slots free tomorrow morning.</p>
+      <button class="btn btn-primary" style="background:#35486B;color:#FBF3E4;padding:10px 14px">Book a slot</button>
+    </div>
+  </div>
+</div></div>
+
+<div class="dv-opt" id="1j"><div class="dv-olabel"><a class="dv-oid" href="#1j">1j</a>Home pública</div>
+<div class="dv-card" style="width:1040px;background:#FBF3E4;padding:0">
+  <div style="padding:20px 34px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--color-divider)">
+    <div style="display:flex;align-items:center;gap:10px">
+      <svg viewBox="0 0 120 120" width="26" height="26"><circle cx="60" cy="30" r="20" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q88 106 76 96 Q64 106 52 96 Q40 106 28 96 Q24 100 20 96 Z" fill="#35486B"></path><g fill="#FBF3E4"><rect x="28" y="46" width="64" height="7"></rect><rect x="28" y="62" width="20" height="14"></rect><rect x="72" y="62" width="20" height="14"></rect></g><rect x="50" y="62" width="20" height="14" fill="#E2683F"></rect></svg>
+      <span style="font:600 16px Fredoka,sans-serif;letter-spacing:-.01em;color:#35486B">BookApricity</span>
+      <span style="font:500 9.5px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--neutral-600);border-left:1px solid rgba(42,33,24,.25);padding-left:10px">an umbricity product</span>
+    </div>
+    <div style="display:flex;gap:10px"><button class="btn btn-secondary" style="padding:9px 14px">Log in</button><button class="btn btn-primary" style="background:#35486B;color:#FBF3E4;padding:9px 14px">Create a club</button></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:0;border-bottom:2px solid var(--color-divider)">
+    <div style="padding:52px 34px 46px;border-right:2px solid var(--color-divider)">
+      <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-2-700)">Booking &amp; membership for clubs</div>
+      <h1 style="margin:14px 0 16px;font-size:58px;line-height:.98;letter-spacing:-.01em;max-width:15ch">The court is free. Say who's on it.</h1>
+      <p style="font-size:16px;max-width:46ch;color:var(--neutral-800)">Set up your resources once, share one invite link, and let members book their own slots. Cancellations, capacity and cutoffs handled.</p>
+      <div style="display:flex;gap:10px;margin-top:22px">
+        <button class="btn btn-primary" style="background:#35486B;color:#FBF3E4;padding:13px 20px;font-size:15px">Create a club</button>
+        <button class="btn btn-secondary" style="padding:13px 20px;font-size:15px">Log in</button>
+      </div>
+      <div style="display:flex;gap:26px;margin-top:34px;border-top:1px solid rgba(42,33,24,.2);padding-top:16px">
+        <div><div style="font:500 22px Fredoka,sans-serif">2 min</div><div style="font-size:11.5px;color:var(--neutral-600)">to set up a club</div></div>
+        <div><div style="font:500 22px Fredoka,sans-serif">1 link</div><div style="font-size:11.5px;color:var(--neutral-600)">to invite every member</div></div>
+        <div><div style="font:500 22px Fredoka,sans-serif">€0</div><div style="font-size:11.5px;color:var(--neutral-600)">until your first booking</div></div>
+      </div>
+    </div>
+    <div style="background:#35486B;padding:40px 34px;display:flex;flex-direction:column;justify-content:space-between">
+      <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#E8A33D">This week at Riverside TC</div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin:24px 0">
+        <sc-for list="{{ posterWeek }}" as="c" hint-placeholder-count="21">
+          <div style="height:24px;background:{{ c.fill }}"></div>
+        </sc-for>
+      </div>
+      <div>
+        <div style="font:500 26px Fredoka,sans-serif;color:#FBF3E4;letter-spacing:-.01em;line-height:1.1">47 slots open,<br>18 already taken.</div>
+        <div style="font-size:12px;color:rgba(251,243,228,.7);margin-top:10px">Cada tramo es una franja de 60 min — el mismo festón del isotipo, usado como dato.</div>
+      </div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr)">
+    <div style="padding:26px 34px;border-right:1px solid rgba(42,33,24,.2)"><div style="font:600 15px Fredoka,sans-serif">Resources, your way</div><p style="margin:6px 0 0;font-size:13px;color:var(--neutral-800)">Courts, rooms, equipment — capacity, slot length and cancellation cutoff per resource.</p></div>
+    <div style="padding:26px 34px;border-right:1px solid rgba(42,33,24,.2)"><div style="font:600 15px Fredoka,sans-serif">One invite link</div><p style="margin:6px 0 0;font-size:13px;color:var(--neutral-800)">Members join themselves. No spreadsheets, no chasing emails.</p></div>
+    <div style="padding:26px 34px"><div style="font:600 15px Fredoka,sans-serif">Members self-serve</div><p style="margin:6px 0 0;font-size:13px;color:var(--neutral-800)">They book and cancel from their phone. You just watch the list.</p></div>
+  </div>
+</div></div>
+
+<div class="dv-opt" id="1k"><div class="dv-olabel"><a class="dv-oid" href="#1k">1k</a>Auth y onboarding — login, signup, join, create club</div>
+<div class="dv-card" style="width:1040px;background:#F5EEE0;padding:24px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px">
+
+  <div style="background:#FBF3E4;border:1px solid rgba(42,33,24,.2);padding:28px">
+    <div style="display:flex;align-items:center;gap:9px;margin-bottom:22px"><svg viewBox="0 0 120 120" width="22" height="22"><circle cx="60" cy="30" r="20" fill="#E8A33D"></circle><path d="M20 38 H100 V96 Q88 106 76 96 Q64 106 52 96 Q40 106 28 96 Q24 100 20 96 Z" fill="#35486B"></path><g fill="#FBF3E4"><rect x="28" y="46" width="64" height="7"></rect><rect x="28" y="62" width="20" height="14"></rect><rect x="72" y="62" width="20" height="14"></rect></g><rect x="50" y="62" width="20" height="14" fill="#E2683F"></rect></svg><span style="font:600 13px Fredoka,sans-serif;color:#35486B">BookApricity</span></div>
+    <h4 style="margin:0 0 4px;font-size:22px;letter-spacing:-.01em">Log in</h4>
+    <p style="font-size:12.5px;color:var(--neutral-600);margin:0 0 18px">Admins and members, same door.</p>
+    <label style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">Email</span><input class="input" value="marc@gmail.com" style="background:#fff;border:1px solid rgba(42,33,24,.3);padding:11px;font:400 13px Figtree,sans-serif;border-radius:0"></label>
+    <label style="display:flex;flex-direction:column;gap:5px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">Password</span><input class="input" type="password" value="0000000" style="background:#fff;border:1px solid #C0341C;padding:11px;font:400 13px Figtree,sans-serif;border-radius:0"></label>
+    <div style="border-left:3px solid #C0341C;background:var(--danger-100);padding:9px 11px;font-size:12.5px;color:#8E2614;margin:12px 0">Wrong email or password. Try again.</div>
+    <button class="btn btn-primary btn-block" style="background:#35486B;color:#FBF3E4;padding:12px 16px;justify-content:flex-start">Log in</button>
+    <p style="font-size:12.5px;margin:14px 0 0;color:var(--neutral-800)">No club yet? <a href="#1k">Create one</a>.</p>
+  </div>
+
+  <div style="background:#FBF3E4;border:1px solid rgba(42,33,24,.2);padding:28px">
+    <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-2-700);margin-bottom:20px">Sign up · paso 2 de 2</div>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:18px">
+      <div style="height:6px;background:#E2683F"></div><div style="height:6px;background:#E2683F"></div><div style="height:6px;background:#EBE1CE"></div><div style="height:6px;background:#EBE1CE"></div><div style="height:6px;background:#EBE1CE"></div><div style="height:6px;background:#EBE1CE"></div><div style="height:6px;background:#EBE1CE"></div>
+    </div>
+    <h4 style="margin:0 0 8px;font-size:22px;letter-spacing:-.01em">Check your inbox</h4>
+    <p style="font-size:13.5px;color:var(--neutral-800);margin:0 0 16px">We sent a confirmation link to <strong>laura@riversidetc.es</strong>. Open it and you'll land straight on club setup.</p>
+    <div style="background:#fff;border:1px solid rgba(42,33,24,.2);padding:12px;font-size:12.5px;color:var(--neutral-800)">Didn't arrive in a minute? <a href="#1k">Resend</a> · <a href="#1k">Use another email</a></div>
+    <hr class="hr">
+    <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600);margin-bottom:8px">Si el enlace falla (/auth/auth-code-error)</div>
+    <p style="font-size:12.5px;margin:0 0 10px;color:var(--neutral-800)">This link has expired or was already used. Confirmation links last one hour.</p>
+    <div style="display:flex;gap:8px"><button class="btn btn-primary" style="background:#35486B;color:#FBF3E4;padding:9px 14px">Sign up again</button><button class="btn btn-secondary" style="padding:9px 14px">Log in</button></div>
+  </div>
+
+  <div style="background:#35486B;border:1px solid #35486B;padding:28px;color:#FBF3E4">
+    <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#E8A33D">You've been invited</div>
+    <h4 style="margin:12px 0 6px;font-size:30px;letter-spacing:-.015em;color:#FBF3E4;line-height:1.05">Join Riverside Tennis Club</h4>
+    <p style="font-size:13.5px;color:rgba(251,243,228,.82);margin:0 0 18px">Create your member account and start booking courts. 34 members already in.</p>
+    <label style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:rgba(251,243,228,.7)">Email</span><input class="input" placeholder="you@example.com" style="background:#FBF3E4;border:1px solid rgba(251,243,228,.5);padding:11px;font:400 13px Figtree,sans-serif;border-radius:0;color:#2A2118"></label>
+    <label style="display:flex;flex-direction:column;gap:5px;margin-bottom:16px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:rgba(251,243,228,.7)">Password</span><input class="input" type="password" placeholder="6 characters minimum" style="background:#FBF3E4;border:1px solid rgba(251,243,228,.5);padding:11px;font:400 13px Figtree,sans-serif;border-radius:0;color:#2A2118"></label>
+    <button class="btn" style="background:#E2683F;color:#fff;padding:12px 16px;width:100%;justify-content:flex-start" style-hover="background:#C6512B">Join club</button>
+    <p style="font-size:12.5px;margin:14px 0 0;color:rgba(251,243,228,.8)">Already have an account? <a href="#1k" style="color:#E8A33D">Log in instead</a></p>
+  </div>
+
+  <div style="background:#FBF3E4;border:1px solid rgba(42,33,24,.2);padding:28px">
+    <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-2-700)">Welcome to BookApricity</div>
+    <h4 style="margin:10px 0 6px;font-size:26px;letter-spacing:-.015em">Name your club</h4>
+    <p style="font-size:13.5px;color:var(--neutral-800);margin:0 0 18px">This is what members see on their invite and in the app. You can change it later.</p>
+    <label style="display:flex;flex-direction:column;gap:5px"><span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600)">Club name</span><input class="input" placeholder="e.g. Riverside Tennis Club" style="background:#fff;border:1px solid rgba(42,33,24,.3);padding:13px;font:600 16px Fredoka,sans-serif;border-radius:0"></label>
+    <button class="btn btn-primary" style="background:#35486B;color:#FBF3E4;padding:12px 16px;margin-top:14px;justify-content:flex-start">Create club</button>
+    <hr class="hr">
+    <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-600);margin-bottom:10px">Después: qué le espera</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;gap:10px;align-items:baseline"><span style="font:600 12px Fredoka,sans-serif;color:#E2683F">01</span><span style="font-size:13px">Add your first resource</span></div>
+      <div style="display:flex;gap:10px;align-items:baseline"><span style="font:600 12px Fredoka,sans-serif;color:var(--neutral-600)">02</span><span style="font-size:13px;color:var(--neutral-800)">Share the invite link</span></div>
+      <div style="display:flex;gap:10px;align-items:baseline"><span style="font:600 12px Fredoka,sans-serif;color:var(--neutral-600)">03</span><span style="font-size:13px;color:var(--neutral-800)">Activate your plan</span></div>
+    </div>
+  </div>
+</div></div>
+
+</div>
+<p class="dv-next">Prueba a pedir: "quédate con <a class="dv-oid" href="#1f">1f</a> pero con presets arriba como en <a class="dv-oid" href="#1g">1g</a>" · "el nav de admin en crema, no en umbral" · "aplica esto a Resources, Members y Billing" · "pásame los tokens de Tailwind"</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;weekStart&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;mon&quot;,&quot;sun&quot;],&quot;default&quot;:&quot;mon&quot;,&quot;tsType&quot;:&quot;\&quot;mon\&quot; | \&quot;sun\&quot;&quot;,&quot;section&quot;:&quot;Comportamiento&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const weekStart = this.props.weekStart ?? "mon";
+    const names = { mon: "Monday", tue: "Tuesday", wed: "Wednesday", thu: "Thursday", fri: "Friday", sat: "Saturday", sun: "Sunday" };
+    const order = weekStart === "sun"
+      ? ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
+      : ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+    // 6:00–22:00 track = 16 h wide
+    const win = { mon: [9, 21], tue: [9, 21], wed: [9, 21], thu: [9, 21], fri: [9, 22], sat: [8, 14], sun: null };
+    const pct = (h) => ((h - 6) / 16) * 100;
+    const fmt = (h) => (h < 10 ? "0" : "") + h + ":00";
+    const weekRows = order.map((k) => {
+      const w = win[k];
+      return {
+        label: names[k], box: w ? "#35486B" : "transparent", ink: w ? "#2A2118" : "#7A6E5D",
+        left: w ? pct(w[0]) + "%" : "0%", width: w ? pct(w[1]) - pct(w[0]) + "%" : "100%",
+        fill: w ? "#35486B" : "repeating-linear-gradient(45deg,#F5EEE0 0 6px,#EBE1CE 6px 12px)",
+        barInk: w ? "#FBF3E4" : "transparent",
+        from: w ? fmt(w[0]) : "", to: w ? fmt(w[1]) : ""
+      };
+    });
+
+    const dows = weekStart === "sun" ? ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] : ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const activeNum = 10; // Thu 10 Sep — same value as the date field
+    const dayTabs = dows.map((dow, i) => {
+      const num = 7 + i;
+      const on = num === activeNum;
+      return {
+        dow, num: String(num),
+        shadow: on ? "inset 0 -3px 0 #E2683F" : "none",
+        bg: on ? "#FFFFFF" : "transparent",
+        ink: on ? "#2A2118" : "#7A6E5D",
+        weight: on ? 800 : 400,
+        mbg: on ? "#35486B" : "#FFFFFF",
+        mink: on ? "#FBF3E4" : "#2A2118",
+        mdow: on ? "rgba(251,243,228,.75)" : "#7A6E5D",
+        mborder: on ? "#35486B" : "rgba(42,33,24,.18)"
+      };
+    });
+
+    const taken = new Set([1, 3, 4, 8, 9, 11, 15, 16, 17, 20]);
+    const posterWeek = Array.from({ length: 21 }, (_, i) => ({
+      fill: taken.has(i) ? "#E2683F" : "rgba(251,243,228,.28)"
+    }));
+
+    return { weekRows, dayTabs, posterWeek };
+  }
+}
+</script>
+</body>
+</html>

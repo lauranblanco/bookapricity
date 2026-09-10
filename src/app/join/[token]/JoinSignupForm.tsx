@@ -8,7 +8,7 @@ import { Button } from "@/components/Button";
 import { FieldLabel } from "@/components/Label";
 import { ErrorBlock } from "@/components/ErrorBlock";
 
-export function JoinSignupForm({ clubId }: { clubId: string }) {
+export function JoinSignupForm({ clubId, token }: { clubId: string; token: string }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -81,7 +81,7 @@ export function JoinSignupForm({ clubId }: { clubId: string }) {
 
       <p className="text-[12.5px] text-[rgba(251,243,228,0.8)]">
         Already have an account?{" "}
-        <Link href={`/login?next=/join/${clubId}`} className="text-sol hover:underline">
+        <Link href={`/login?next=/join/${token}`} className="text-sol hover:underline">
           Log in instead
         </Link>
       </p>

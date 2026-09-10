@@ -1,0 +1,37 @@
+:root{
+  /* Umbricity palette */
+  --ba-sol:#E8A33D; --ba-resol:#E2683F; --ba-umbral:#35486B;
+  --ba-bruma:#8FA3B8; --ba-crema:#FBF3E4; --ba-tinta:#2A2118;
+
+  /* Roles */
+  --ba-bg:#FBF3E4; --ba-surface:#FFFFFF; --ba-text:#2A2118;
+  --ba-muted:#7A6E5D; --ba-strong:#4A4136;
+  --ba-line:rgba(42,33,24,.20); --ba-line-soft:rgba(42,33,24,.12);
+  --ba-rule:rgba(42,33,24,.40);          /* 2px section rules */
+  --ba-neutral-100:#F5EEE0; --ba-neutral-200:#EBE1CE;
+
+  /* Umbral ramp */
+  --ba-umbral-100:#EDF0F6; --ba-umbral-200:#D6DDEA; --ba-umbral-300:#B2BED4;
+  --ba-umbral-400:#7E90B0; --ba-umbral-500:#4E628C; --ba-umbral-600:#2B3B58;
+  --ba-umbral-700:#293857; --ba-umbral-800:#1E2941; --ba-umbral-900:#151C2C;
+
+  /* Resol ramp */
+  --ba-resol-100:#FDF0EA; --ba-resol-200:#F9DCCF; --ba-resol-300:#F3BCA4;
+  --ba-resol-400:#EC9271; --ba-resol-500:#E2683F; --ba-resol-600:#C6512B;
+  --ba-resol-700:#A03D1E; --ba-resol-800:#772C15; --ba-resol-900:#4C1F11;
+
+  /* Semantic */
+  --ba-success:#2F6B4F; --ba-success-100:#E6F0E9; --ba-success-900:#1F4A36;
+  --ba-warning:#E8A33D; --ba-warning-100:#FCEFD5; --ba-warning-900:#7A4E09;
+  --ba-danger:#C0341C;  --ba-danger-100:#FBE9E5;  --ba-danger-900:#8E2614;
+
+  /* Type */
+  --ba-font-heading:Fredoka,system-ui,sans-serif;
+  --ba-font-body:Figtree,system-ui,sans-serif;
+  --ba-font-mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  /* Geometry */
+  --ba-radius:0px;
+  --ba-space-1:4px; --ba-space-2:8px; --ba-space-3:12px; --ba-space-4:16px;
+  --ba-space-6:24px; --ba-space-8:32px; --ba-space-12:48px;
+}

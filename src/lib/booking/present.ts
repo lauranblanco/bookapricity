@@ -17,6 +17,23 @@ export function formatDateLabel(date: Date) {
   return `${WEEKDAYS[date.getDay()]} ${date.getDate()} ${MONTHS[date.getMonth()]}`;
 }
 
+// "12 Mar 2026" — used where a bare date reads better without a weekday
+// (member "joined" dates, invoice dates).
+export function formatDayMonthYear(date: Date) {
+  return `${date.getDate()} ${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
+}
+
+// "02 SEP" — compact uppercase form for the mobile member-list metadata line.
+export function formatDayMonthShort(date: Date) {
+  return `${String(date.getDate()).padStart(2, "0")} ${MONTHS[date.getMonth()].toUpperCase()}`;
+}
+
+// "08 OCT 2026" — compact uppercase form with year, for the billing page's
+// "RENEWS ..." / "Payment failed on ..." mono labels.
+export function formatDayMonthYearShort(date: Date) {
+  return `${String(date.getDate()).padStart(2, "0")} ${MONTHS[date.getMonth()].toUpperCase()} ${date.getFullYear()}`;
+}
+
 export function sameCalendarDay(a: Date, b: Date) {
   return (
     a.getFullYear() === b.getFullYear() &&
