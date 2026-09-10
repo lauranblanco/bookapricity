@@ -4,6 +4,7 @@ import { signInWithPassword } from "@/lib/supabase/actions";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Input } from "@/components/Input";
+import { PasswordInput } from "@/components/PasswordInput";
 import { Button } from "@/components/Button";
 import { FieldLabel } from "@/components/Label";
 import { ErrorBlock } from "@/components/ErrorBlock";
@@ -46,8 +47,7 @@ export function LoginForm({ next = "/" }: { next?: string }) {
 
       <label className="flex flex-col gap-1.5">
         <FieldLabel>Password</FieldLabel>
-        <Input
-          type="password"
+        <PasswordInput
           required
           invalid={Boolean(error)}
           value={password}

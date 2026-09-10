@@ -1,11 +1,16 @@
 "use client";
 
 import { signUpWithRole, resendSignupConfirmation } from "@/lib/supabase/actions";
+import Link from "next/link";
 import { useState } from "react";
 import { Input } from "@/components/Input";
+import { PasswordInput } from "@/components/PasswordInput";
 import { Button } from "@/components/Button";
 import { FieldLabel } from "@/components/Label";
 import { ErrorBlock } from "@/components/ErrorBlock";
+import { GoogleSignInButton } from "@/components/GoogleSignInButton";
+
+const SIGNUP_NEXT = "/onboarding/create-club";
 
 // The same "week" gesture used in the hero poster and the empty states —
 // here it doubles as a lightweight progress cue, not a literal step tracker.
@@ -25,21 +30,26 @@ export function SignupForm() {
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedEmail, setSubmittedEmail] = useState<string | null>(null);
+  const [alreadyRegistered, setAlreadyRegistered] = useState(false);
   const [resendState, setResendState] = useState<"idle" | "sending" | "sent">("idle");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
+    setAlreadyRegistered(false);
     setIsSubmitting(true);
 
-    const result = await signUpWithRole(email, password, "admin", {
-      next: "/onboarding/create-club",
-    });
+    const result = await signUpWithRole(email, password, "admin", { next: SIGNUP_NEXT });
 
     setIsSubmitting(false);
 
     if (result.error) {
       setError(result.error);
+      return;
+    }
+
+    if (result.alreadyRegistered) {
+      setAlreadyRegistered(true);
       return;
     }
 
@@ -49,7 +59,7 @@ export function SignupForm() {
   async function handleResend() {
     if (!submittedEmail || resendState === "sending") return;
     setResendState("sending");
-    await resendSignupConfirmation(submittedEmail);
+    await resendSignupConfirmation(submittedEmail, SIGNUP_NEXT);
     setResendState("sent");
   }
 
@@ -99,8 +109,7 @@ export function SignupForm() {
 
         <label className="flex flex-col gap-1.5">
           <FieldLabel>Password</FieldLabel>
-          <Input
-            type="password"
+          <PasswordInput
             required
             minLength={6}
             value={password}
@@ -109,11 +118,27 @@ export function SignupForm() {
         </label>
 
         {error && <ErrorBlock>{error}</ErrorBlock>}
+        {alreadyRegistered && (
+          <ErrorBlock>
+            An account with this email already exists.{" "}
+            <Link href="/login" className="underline">
+              Log in instead
+            </Link>
+            .
+          </ErrorBlock>
+        )}
 
         <Button type="submit" variant="primary" block disabled={isSubmitting} className="mt-1">
           {isSubmitting ? "Signing up…" : "Sign up"}
         </Button>
       </form>
+
+      <div className="my-3.5 flex items-center gap-2.5">
+        <span className="h-px flex-1 bg-[rgba(42,33,24,0.15)]" />
+        <span className="font-mono text-[10px] uppercase tracking-[.1em] text-tinta-600">or</span>
+        <span className="h-px flex-1 bg-[rgba(42,33,24,0.15)]" />
+      </div>
+      <GoogleSignInButton next={SIGNUP_NEXT} intent="admin_signup" label="Sign up with Google" />
     </div>
   );
 }

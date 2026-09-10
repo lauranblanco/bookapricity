@@ -13,6 +13,7 @@ export default async function MyReservationsPage() {
     .from("reservations")
     .select("id, start_time, end_time, status, resources(name, cancellation_cutoff_minutes)")
     .eq("member_id", profile!.id)
+    .eq("status", "confirmed")
     .gte("start_time", new Date().toISOString())
     .order("start_time", { ascending: true });
 

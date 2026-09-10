@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { SignOutButton } from "@/components/SignOutButton";
 import { BrandMark } from "@/components/BrandMark";
 import { MemberNavTabs, type NavTabItem } from "@/components/NavTabs";
+import { MobileNavMenu } from "@/components/MobileNavMenu";
 import { redirect } from "next/navigation";
 
 const NAV_ITEMS: NavTabItem[] = [
@@ -42,26 +43,24 @@ export default async function MemberLayout({
 
   return (
     <div className="min-h-screen bg-crema">
-      <header className="border-b-2 border-umbral bg-crema">
-        <div className="flex items-center justify-between gap-4 px-4 py-3 md:h-[58px] md:px-6 md:py-0">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
+      <header className="relative border-b-2 border-umbral bg-crema">
+        <div className="flex items-center justify-between gap-3 px-4 py-3 md:h-[58px] md:px-6 md:py-0">
+          <div className="flex min-w-0 items-center gap-3 md:gap-6">
+            <MobileNavMenu items={NAV_ITEMS} theme="light" />
+            <div className="flex min-w-0 items-center gap-2">
               <BrandMark variant="color" size={24} />
-              <span className="font-heading text-sm font-semibold tracking-[-.01em] text-tinta">
+              <span className="truncate font-heading text-sm font-semibold tracking-[-.01em] text-tinta">
                 {club?.name ?? "BookApricity"}
               </span>
             </div>
             <div className="hidden md:block">
-              <MemberNavTabs items={NAV_ITEMS} layout="desktop" />
+              <MemberNavTabs items={NAV_ITEMS} />
             </div>
           </div>
-          <div className="flex items-center gap-3.5">
-            <span className="text-xs text-tinta-600">{profile.email}</span>
+          <div className="flex shrink-0 items-center gap-3.5">
+            <span className="hidden truncate text-xs text-tinta-600 sm:inline">{profile.email}</span>
             <SignOutButton />
           </div>
-        </div>
-        <div className="border-t border-[rgba(42,33,24,0.12)] md:hidden">
-          <MemberNavTabs items={NAV_ITEMS} layout="mobile" />
         </div>
       </header>
       <div className="mx-auto max-w-6xl px-6 py-8">{children}</div>

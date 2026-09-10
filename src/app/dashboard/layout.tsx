@@ -3,12 +3,13 @@ import { createClient } from "@/lib/supabase/server";
 import { SignOutButton } from "@/components/SignOutButton";
 import { BrandMark } from "@/components/BrandMark";
 import { AdminNavTabs, type NavTabItem } from "@/components/NavTabs";
+import { MobileNavMenu } from "@/components/MobileNavMenu";
 import { Badge, type BadgeTone } from "@/components/Badge";
 import { redirect } from "next/navigation";
 
 const NAV_ITEMS: NavTabItem[] = [
-  { href: "/dashboard", label: "Reservations", shortLabel: "Reserv." },
-  { href: "/dashboard/resources", label: "Resources", shortLabel: "Resour." },
+  { href: "/dashboard", label: "Reservations" },
+  { href: "/dashboard/resources", label: "Resources" },
   { href: "/dashboard/members", label: "Members" },
   { href: "/dashboard/billing", label: "Billing" },
 ];
@@ -50,29 +51,27 @@ export default async function DashboardLayout({
 
   return (
     <div className="min-h-screen bg-crema">
-      <header className="bg-umbral">
-        <div className="flex items-center justify-between gap-4 px-4 py-3 md:mx-auto md:h-[58px] md:max-w-6xl md:px-6 md:py-0">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
+      <header className="relative bg-umbral">
+        <div className="flex items-center justify-between gap-3 px-4 py-3 md:mx-auto md:h-[58px] md:max-w-6xl md:px-6 md:py-0">
+          <div className="flex min-w-0 items-center gap-3 md:gap-6">
+            <MobileNavMenu items={NAV_ITEMS} theme="dark" />
+            <div className="flex min-w-0 items-center gap-2">
               <BrandMark variant="negative" size={24} />
-              <span className="font-heading text-sm font-semibold tracking-[-.01em] text-crema">
+              <span className="truncate font-heading text-sm font-semibold tracking-[-.01em] text-crema">
                 BookApricity
               </span>
             </div>
             <div className="hidden md:block">
-              <AdminNavTabs items={NAV_ITEMS} layout="desktop" />
+              <AdminNavTabs items={NAV_ITEMS} />
             </div>
           </div>
-          <div className="flex items-center gap-3.5">
+          <div className="flex shrink-0 items-center gap-3.5">
             <Badge tone={plan.tone}>{plan.label}</Badge>
             <span className="hidden truncate text-xs text-[rgba(251,243,228,0.7)] sm:inline">
               {profile.email}
             </span>
             <SignOutButton variant="outlineInverse" />
           </div>
-        </div>
-        <div className="md:hidden">
-          <AdminNavTabs items={NAV_ITEMS} layout="mobile" />
         </div>
       </header>
       <div className="mx-auto max-w-6xl px-6 py-8">{children}</div>

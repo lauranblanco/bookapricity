@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 
-export type NavTabItem = { href: string; label: string; shortLabel?: string };
+export type NavTabItem = { href: string; label: string };
 
 // Picks the tab whose href is the longest matching prefix of the current
 // path, so e.g. "/dashboard/resources/new" activates "Resources" and not
@@ -20,24 +20,15 @@ function activeHref(pathname: string | null, items: NavTabItem[]): string | null
 
 const ACTIVE_UNDERLINE = "shadow-[inset_0_-3px_0_#E2683F]";
 
-export function AdminNavTabs({
-  items,
-  layout = "desktop",
-}: {
-  items: NavTabItem[];
-  layout?: "desktop" | "mobile";
-}) {
+// Desktop-only tab strip — below `md` the same items render in
+// MobileNavMenu's dropdown instead, since a full row of tabs doesn't fit
+// a phone screen without pushing the leftmost ones off-screen.
+export function AdminNavTabs({ items }: { items: NavTabItem[] }) {
   const pathname = usePathname();
   const active = activeHref(pathname, items);
 
   return (
-    <div
-      className={
-        layout === "desktop"
-          ? "flex items-stretch gap-0.5 overflow-x-auto"
-          : "grid grid-cols-4"
-      }
-    >
+    <div className="flex items-stretch gap-0.5 overflow-x-auto">
       {items.map((item) => {
         const isActive = item.href === active;
         return (
@@ -45,16 +36,13 @@ export function AdminNavTabs({
             key={item.href}
             href={item.href}
             className={cn(
-              "flex items-center whitespace-nowrap transition-colors duration-[120ms] ease-out",
-              layout === "desktop"
-                ? "px-3.5 text-[12.5px]"
-                : "min-h-11 justify-center px-2 text-center text-[11.5px]",
+              "flex items-center whitespace-nowrap px-3.5 text-[12.5px] transition-colors duration-[120ms] ease-out",
               isActive
                 ? cn("font-heading font-semibold text-white", ACTIVE_UNDERLINE)
                 : "font-sans text-[rgba(251,243,228,0.78)] hover:bg-white/[.08] hover:text-white",
             )}
           >
-            {layout === "mobile" ? (item.shortLabel ?? item.label) : item.label}
+            {item.label}
           </Link>
         );
       })}
@@ -62,18 +50,12 @@ export function AdminNavTabs({
   );
 }
 
-export function MemberNavTabs({
-  items,
-  layout,
-}: {
-  items: NavTabItem[];
-  layout: "desktop" | "mobile";
-}) {
+export function MemberNavTabs({ items }: { items: NavTabItem[] }) {
   const pathname = usePathname();
   const active = activeHref(pathname, items);
 
   return (
-    <div className={layout === "desktop" ? "flex items-stretch gap-0.5" : "grid grid-cols-2 bg-white"}>
+    <div className="flex items-stretch gap-0.5">
       {items.map((item) => {
         const isActive = item.href === active;
         return (
@@ -81,10 +63,7 @@ export function MemberNavTabs({
             key={item.href}
             href={item.href}
             className={cn(
-              "flex items-center whitespace-nowrap transition-colors duration-[120ms] ease-out",
-              layout === "desktop"
-                ? "px-3.5 text-[12.5px]"
-                : "min-h-11 justify-center px-3 py-3 text-[12.5px]",
+              "flex items-center whitespace-nowrap px-3.5 text-[12.5px] transition-colors duration-[120ms] ease-out",
               isActive
                 ? cn("font-heading font-semibold text-tinta", ACTIVE_UNDERLINE)
                 : "font-sans text-tinta-800 hover:bg-[rgba(42,33,24,0.06)]",

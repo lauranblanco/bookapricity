@@ -4,6 +4,7 @@ import { signUpWithRole } from "@/lib/supabase/actions";
 import Link from "next/link";
 import { useState } from "react";
 import { Input } from "@/components/Input";
+import { PasswordInput } from "@/components/PasswordInput";
 import { Button } from "@/components/Button";
 import { FieldLabel } from "@/components/Label";
 import { ErrorBlock } from "@/components/ErrorBlock";
@@ -14,10 +15,12 @@ export function JoinSignupForm({ clubId, token }: { clubId: string; token: strin
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedEmail, setSubmittedEmail] = useState<string | null>(null);
+  const [alreadyRegistered, setAlreadyRegistered] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
+    setAlreadyRegistered(false);
     setIsSubmitting(true);
 
     const result = await signUpWithRole(email, password, "member", {
@@ -29,6 +32,11 @@ export function JoinSignupForm({ clubId, token }: { clubId: string; token: strin
 
     if (result.error) {
       setError(result.error);
+      return;
+    }
+
+    if (result.alreadyRegistered) {
+      setAlreadyRegistered(true);
       return;
     }
 
@@ -61,8 +69,7 @@ export function JoinSignupForm({ clubId, token }: { clubId: string; token: strin
 
         <label className="flex flex-col gap-1.5">
           <FieldLabel className="!text-[rgba(251,243,228,0.7)]">Password</FieldLabel>
-          <Input
-            type="password"
+          <PasswordInput
             required
             minLength={6}
             placeholder="6 characters minimum"
@@ -73,6 +80,15 @@ export function JoinSignupForm({ clubId, token }: { clubId: string; token: strin
         </label>
 
         {error && <ErrorBlock>{error}</ErrorBlock>}
+        {alreadyRegistered && (
+          <ErrorBlock>
+            An account with this email already exists.{" "}
+            <Link href={`/login?next=/join/${token}`} className="underline">
+              Log in instead
+            </Link>
+            .
+          </ErrorBlock>
+        )}
 
         <Button type="submit" variant="cta" block disabled={isSubmitting} className="mt-1">
           {isSubmitting ? "Joining…" : "Join club"}

@@ -12,17 +12,17 @@ export async function signUpWithRole(
 ) {
   const supabase = createClient();
 
-  const redirectUrl = new URL(`${process.env.SITE_URL}/auth/callback`);
-  if (options?.next) {
-    redirectUrl.searchParams.set("next", options.next);
-  }
+  // The "Confirm signup" email template points here with a token_hash
+  // (see /auth/confirm) and carries this value through as `next`, so it
+  // must be the final destination, not an intermediate route.
+  const emailRedirectTo = new URL(options?.next ?? "/", process.env.SITE_URL).toString();
 
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
       data: { role, club_id: options?.clubId },
-      emailRedirectTo: redirectUrl.toString(),
+      emailRedirectTo,
     },
   });
 
@@ -30,15 +30,30 @@ export async function signUpWithRole(
     return { error: error.message };
   }
 
+  // Supabase returns a 200 with a user object even when the email is
+  // already registered (to avoid leaking which emails exist) — but sends
+  // no confirmation email in that case. An empty `identities` array is
+  // the documented signal that this "signup" actually matched an
+  // existing account.
+  if (data.user && data.user.identities?.length === 0) {
+    return { alreadyRegistered: true as const };
+  }
+
   // With email confirmation required (the default), signUp does not
   // return an active session — the caller must confirm via email first.
   return { data, needsEmailConfirmation: !data.session };
 }
 
-export async function resendSignupConfirmation(email: string) {
+export async function resendSignupConfirmation(email: string, next?: string) {
   const supabase = createClient();
 
-  const { error } = await supabase.auth.resend({ type: "signup", email });
+  const emailRedirectTo = new URL(next ?? "/", process.env.SITE_URL).toString();
+
+  const { error } = await supabase.auth.resend({
+    type: "signup",
+    email,
+    options: { emailRedirectTo },
+  });
 
   if (error) {
     return { error: error.message };
