@@ -21,12 +21,21 @@ export function BillingSalesCard({ tier }: { tier: Tier }) {
   useEffect(() => {
     let cancelled = false;
 
-    initializePaddle({
-      environment: getPaddleClientEnvironment(),
-      token: process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN!,
-    }).then((instance) => {
-      if (!cancelled && instance) setPaddle(instance);
-    });
+    try {
+      initializePaddle({
+        environment: getPaddleClientEnvironment(),
+        token: process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN!,
+      }).then((instance) => {
+        if (!cancelled && instance) setPaddle(instance);
+      });
+    } catch {
+      // getPaddleClientEnvironment() throws on a missing/misconfigured
+      // NEXT_PUBLIC_PADDLE_ENV — surface it as a normal error state
+      // instead of an uncaught throw, which would take down the whole
+      // page (there's no error boundary between here and the dashboard
+      // layout).
+      if (!cancelled) setError("Checkout is temporarily unavailable. Try again later.");
+    }
 
     return () => {
       cancelled = true;
