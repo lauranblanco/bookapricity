@@ -30,7 +30,7 @@ export const COLORS = {
 export const FONT_FAMILY = "Figtree, Helvetica, Arial, sans-serif";
 
 export function EmailLayout({
-  siteUrl = "https://bookapricity.com",
+  siteUrl = "https://bookapricity.umbricity.com",
   preview,
   children,
 }: {

@@ -1,7 +1,11 @@
 import { Button, Heading, Text } from "@react-email/components";
 import { COLORS, EmailLayout, FONT_FAMILY } from "./EmailLayout";
 
-export function WelcomeEmail({ siteUrl = "https://bookapricity.com" }: { siteUrl?: string }) {
+export function WelcomeEmail({
+  siteUrl = "https://bookapricity.umbricity.com",
+}: {
+  siteUrl?: string;
+}) {
   return (
     <EmailLayout siteUrl={siteUrl} preview="Your BookApricity account is confirmed and ready to go.">
       <Heading

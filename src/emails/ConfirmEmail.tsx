@@ -9,7 +9,7 @@ import { COLORS, EmailLayout, FONT_FAMILY } from "./EmailLayout";
 // already the literal Go-template expression Supabase's template engine
 // expects, so the copied HTML works as-is — no substitution step needed.
 export function ConfirmEmail({
-  siteUrl = "https://bookapricity.com",
+  siteUrl = "https://bookapricity.umbricity.com",
   confirmUrl = "{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=signup&next={{ .RedirectTo }}",
 }: {
   siteUrl?: string;
