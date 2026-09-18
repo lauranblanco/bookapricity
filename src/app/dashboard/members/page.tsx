@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { CopyInviteLink } from "./CopyInviteLink";
 import { MembersTable, type MemberRow } from "./MembersTable";
 import { MembersEmptyState } from "./MembersEmptyState";
+import { PLAN_LIMITS, effectivePlan, type PlanId } from "@/lib/plans/limits";
 
 export default async function MembersPage() {
   const profile = await getCurrentProfile();
@@ -16,9 +17,12 @@ export default async function MembersPage() {
 
   const { data: club } = await supabase
     .from("clubs")
-    .select("invite_token")
+    .select("invite_token, subscription_status, plan")
     .eq("id", profile!.club_id!)
     .single();
+
+  const plan = effectivePlan((club?.plan as PlanId) ?? "free", club?.subscription_status ?? "inactive");
+  const memberLimit = PLAN_LIMITS[plan].members;
 
   const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
 
@@ -56,9 +60,19 @@ export default async function MembersPage() {
           Members
         </h2>
         <span className="font-mono text-[11px] font-medium uppercase tracking-[.09em] text-tinta-600">
-          {rows.length} members · {adminCount} admins
+          {rows.length} of {memberLimit ?? "unlimited"} members · {adminCount} admins
         </span>
       </div>
+
+      {memberLimit !== null && rows.length >= memberLimit && (
+        <p className="text-sm text-tinta-600">
+          This club has reached its member limit.{" "}
+          <a href="/dashboard/billing" className="underline">
+            Upgrade
+          </a>{" "}
+          to let more members join.
+        </p>
+      )}
 
       <CopyInviteLink inviteUrl={inviteUrl} />
 

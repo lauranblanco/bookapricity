@@ -15,12 +15,11 @@ async function getOrCreatePaddleCustomerId(email: string) {
   return customer.id;
 }
 
-// Creates a Paddle transaction for the calling admin's club subscription.
-// The transaction id is opened client-side via the Paddle.js overlay
-// (Paddle.Checkout.open({ transactionId })).
-export async function createCheckoutTransaction(
-  priceId: string = process.env.NEXT_PUBLIC_PADDLE_PRICE_ID!,
-) {
+// Creates a Paddle transaction for the calling admin's club subscription,
+// for whichever tier's price id the caller picked (see TIERS in
+// src/lib/paddle/tiers.ts). The transaction id is opened client-side via
+// the Paddle.js overlay (Paddle.Checkout.open({ transactionId })).
+export async function createCheckoutTransaction(priceId: string) {
   const supabase = createClient();
 
   const {

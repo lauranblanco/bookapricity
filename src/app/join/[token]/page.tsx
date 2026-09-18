@@ -12,7 +12,7 @@ export default async function JoinPage({
   const { data } = await supabase
     .rpc("get_club_by_invite_token", { p_token: params.token })
     .maybeSingle();
-  const club = data as { id: string; name: string } | null;
+  const club = data as { id: string; name: string; can_accept_member: boolean } | null;
 
   if (!club) {
     return (
@@ -40,9 +40,27 @@ export default async function JoinPage({
           Create your member account and start booking courts.
         </p>
 
-        {!profile && <JoinSignupForm clubId={club.id} token={params.token} />}
+        {!profile && !club.can_accept_member && (
+          <p className="text-[13.5px] text-[rgba(251,243,228,0.85)]">
+            This club isn&apos;t accepting new members right now. Ask your club admin to upgrade
+            their plan.
+          </p>
+        )}
 
-        {profile && !profile.club_id && <JoinButton clubId={club.id} />}
+        {!profile && club.can_accept_member && (
+          <JoinSignupForm clubId={club.id} token={params.token} />
+        )}
+
+        {profile && !profile.club_id && !club.can_accept_member && (
+          <p className="text-[13.5px] text-[rgba(251,243,228,0.85)]">
+            This club isn&apos;t accepting new members right now. Ask your club admin to upgrade
+            their plan.
+          </p>
+        )}
+
+        {profile && !profile.club_id && club.can_accept_member && (
+          <JoinButton clubId={club.id} />
+        )}
 
         {profile && profile.club_id === club.id && (
           <p className="text-[13.5px] text-[rgba(251,243,228,0.85)]">

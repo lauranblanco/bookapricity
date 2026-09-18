@@ -29,7 +29,7 @@ browse and book time slots.
    - Has no billing access
 
 ## Data model
-- Club: id, name, admin_id, subscription_status, created_at
+- Club: id, name, admin_id, subscription_status, plan (free/small/unlimited), created_at
 - User: id, email, role (admin/member), club_id
 - Resource: id, club_id, name, description, capacity,
   booking_duration_minutes, available_hours
@@ -58,9 +58,20 @@ Member flow:
 - Allow cancellation up until a configurable cutoff before start time
 
 ## Payments (v1 scope — keep this simple)
-- Only the Admin pays: one monthly subscription via Paddle to
-  unlock full platform access for their club.
+- Only the Admin pays: an optional monthly subscription via Paddle to
+  raise their club's resource/member limits.
 - Do NOT build any flow where members pay the club through the app.
+
+## Plan limits
+- Free ($0): 1 resource, 5 members
+- Club ($14.99/mo): 10 resources, 30 members
+- Big Club ($29.99/mo): no limits
+- Every club starts on Free; limits are enforced both in Postgres
+  (see supabase/migrations/20260916000000_subscription_plan_limits.sql
+  — the real enforcement, so a direct API call can't bypass it) and
+  mirrored in src/lib/plans/limits.ts for UI display. A club's plan
+  only applies while its subscription is active/past_due — it falls
+  back to Free otherwise, without deleting anything already created.
 
 ## Out of scope for v1
 - Member-to-club dues/fee collection

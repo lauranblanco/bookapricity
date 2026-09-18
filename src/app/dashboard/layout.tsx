@@ -6,6 +6,7 @@ import { AdminNavTabs, type NavTabItem } from "@/components/NavTabs";
 import { MobileNavMenu } from "@/components/MobileNavMenu";
 import { Badge, type BadgeTone } from "@/components/Badge";
 import { redirect } from "next/navigation";
+import { PLAN_NAMES, effectivePlan, type PlanId } from "@/lib/plans/limits";
 
 const NAV_ITEMS: NavTabItem[] = [
   { href: "/dashboard", label: "Reservations" },
@@ -14,11 +15,11 @@ const NAV_ITEMS: NavTabItem[] = [
   { href: "/dashboard/billing", label: "Billing" },
 ];
 
-const PLAN_BADGE: Record<string, { label: string; tone: BadgeTone }> = {
-  active: { label: "Plan active", tone: "planActive" },
-  past_due: { label: "Past due", tone: "pastDue" },
-  inactive: { label: "Inactive", tone: "inactive" },
-  cancelled: { label: "Cancelled plan", tone: "cancelledPlan" },
+const STATUS_TONE: Record<string, BadgeTone> = {
+  active: "planActive",
+  past_due: "pastDue",
+  inactive: "inactive",
+  cancelled: "cancelledPlan",
 };
 
 export default async function DashboardLayout({
@@ -43,11 +44,19 @@ export default async function DashboardLayout({
   const supabase = createClient();
   const { data: club } = await supabase
     .from("clubs")
-    .select("subscription_status")
+    .select("subscription_status, plan")
     .eq("id", profile.club_id)
     .single();
 
-  const plan = PLAN_BADGE[club?.subscription_status ?? "inactive"] ?? PLAN_BADGE.inactive;
+  const status = club?.subscription_status ?? "inactive";
+  const plan = effectivePlan((club?.plan as PlanId) ?? "free", status);
+  const badgeLabel =
+    status === "past_due"
+      ? "Past due"
+      : status === "cancelled"
+        ? "Cancelled plan"
+        : `${PLAN_NAMES[plan]} plan`;
+  const badgeTone = STATUS_TONE[status] ?? "inactive";
 
   return (
     <div className="min-h-screen bg-crema">
@@ -66,7 +75,7 @@ export default async function DashboardLayout({
             </div>
           </div>
           <div className="flex shrink-0 items-center gap-3.5">
-            <Badge tone={plan.tone}>{plan.label}</Badge>
+            <Badge tone={badgeTone}>{badgeLabel}</Badge>
             <span className="hidden truncate text-xs text-[rgba(251,243,228,0.7)] sm:inline">
               {profile.email}
             </span>
